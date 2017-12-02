@@ -7,46 +7,41 @@
                         <div class="header-unit" style="height:300px;">
                             <div class="small-12 columns" id="pad">
                                 <div class="grid-x">
-                                    <div class="medium-6 large-1 cell">
-                                    </div>
-                                    <div class="medium-6 large-12 cell">
-                                        <div class="top-bar" id="example-menu"
-                                             style="border-bottom: solid 1px #ffffff;">
-                                            <div class="top-bar-left">
-                                                <ul class="dropdown menu" data-dropdown-menu>
-                                                    <li class="menu-tex"><img class="logo" src="img/logo.png"/></li>
-                                                    <li style="font-family: 'Proxima Nova Regular', sans-serif;">HOME
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="top-bar-right">
-                                                <ul class="menu">
-                                                    <li style="font-family: 'Proxima Nova Regular', sans-serif;">
-                                                        CONTACT US
-                                                    </li>
-                                                    <li>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</li>
-                                                    <li style="font-weight:bold;font-family: 'Proxima Nova Bold', sans-serif;">
-                                                        &nbsp;CART
-                                                    </li>
-                                                    <li style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button
-                                                            id="mob"
-                                                            style="color:#ffffff;cursor: pointer;"
-                                                            data-toggle="menus">
-                                                        <i class="fa fa-list" aria-hidden="true"></i></button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
 
+                                        <img src="./img/image.jpg">
 
-                                        <img src="./img/dubai.jpg">
-
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="small-12 columns" style="text-align:center;padding:50px;color:#0A0A0A;">
+                    <div class="small-8 columns" style="text-align:center;color:#0A0A0A;">
+                        <div class="top-bar" id="main-menu"
+                             style="border-bottom: solid 1px #ffffff;top:5%;position:relative;">
+                            <div class="top-bar-left">
+                                <ul class="dropdown menu" data-dropdown-menu>
+                                    <li class="menu-tex"><img class="logo" src="img/logo.png"/></li>
+                                    <li style="font-family: 'Proxima Nova Regular', sans-serif;">HOME
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="top-bar-right" >
+                                <ul class="menu">
+                                    <li style="font-family: 'Proxima Nova Regular', sans-serif;">
+                                        CONTACT US
+                                    </li>
+                                    <li>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                                    <li style="font-weight:bold;font-family: 'Proxima Nova Bold', sans-serif;">
+                                        &nbsp;CART
+                                    </li>
+                                    <li style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button
+                                            id="mob"
+                                            style="color:#ffffff;cursor: pointer;"
+                                            data-toggle="menus">
+                                        <i class="fa fa-list" aria-hidden="true"></i></button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                         <h2 style="word-spacing: 1px;color:#ffffff;font-family: 'Proxima Nova Regular', sans-serif;">
                             Shop with us this summer!</h2>
                         <p style="color:#ffffff;font-size:18px;font-family: 'Proxima Nova Regular', sans-serif;line-height:25px;margin-top:30px;margin-bottom:45px;">
