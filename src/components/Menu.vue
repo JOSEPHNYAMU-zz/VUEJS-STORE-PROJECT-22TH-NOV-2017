@@ -1,4 +1,5 @@
 <template>
+
     <div class="small-8 columns">
         <div class="top-bar" id="main-menu"
              style="background-color:transparent;top:0%;position:fixed;width:100%;">
