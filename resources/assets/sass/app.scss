@@ -1,0 +1,13 @@
+//Icons
+@import "./icons/foundation-icons.css";
+// Variables
+@import "settings";
+// Foundation Import
+@import "../../../node_modules/foundation-sites/assets/foundation";
+//Normalize Import
+//@import "../../../node_modules/normalize.scss/normalize";
+
+
+
+.dropdown.menu > li.is-dropdown-submenu-parent > a::after {border: none;}
+
