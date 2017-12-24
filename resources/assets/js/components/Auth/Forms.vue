@@ -26,7 +26,7 @@
 
             <!-- Register -->
             <div class="reveal" id="register" data-reveal>
-                <h5><i class="fi-plus"></i>&nbsp;Register</h5>
+                <h5><i class="fi-plus"></i>&nbsp;Register Now</h5>
                 <hr/>
 
                 <form>
