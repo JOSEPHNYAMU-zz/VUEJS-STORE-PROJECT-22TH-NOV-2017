@@ -53930,40 +53930,45 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "app" } }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "small-12 columns" }, [
-        _c(
-          "div",
-          { staticClass: "row" },
-          [
-            _c("div", { staticClass: "small-12 columns" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "header-unit",
-                  staticStyle: { height: "300px" }
-                },
-                [_c("banner-image")],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _c("banner-texts"),
-            _vm._v(" "),
-            _c("store-items"),
-            _vm._v(" "),
-            _c("action-section"),
-            _vm._v(" "),
-            _c("foot-data"),
-            _vm._v(" "),
-            _c("login-view")
-          ],
-          1
-        )
-      ])
-    ])
-  ])
+  return _c(
+    "div",
+    { attrs: { id: "app" } },
+    [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "small-12 columns" }, [
+          _c(
+            "div",
+            { staticClass: "row" },
+            [
+              _c("div", { staticClass: "small-12 columns" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "header-unit",
+                    staticStyle: { height: "300px" }
+                  },
+                  [_c("banner-image")],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("banner-texts"),
+              _vm._v(" "),
+              _c("store-items"),
+              _vm._v(" "),
+              _c("action-section"),
+              _vm._v(" "),
+              _c("foot-data")
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("auth-view")
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -54407,8 +54412,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Items_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__Items_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Action_vue__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Action_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__Action_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Auth_Login_vue__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Auth_Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__Auth_Login_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Auth_Forms_vue__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Auth_Forms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__Auth_Forms_vue__);
 //
 //
 //
@@ -54439,6 +54444,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            component: 'login-view'
+        };
+    },
+
     components: {
         'main-menu': __WEBPACK_IMPORTED_MODULE_0__Menu_vue___default.a,
         'banner-texts': __WEBPACK_IMPORTED_MODULE_1__BannerText_vue___default.a,
@@ -54446,7 +54457,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         'banner-image': __WEBPACK_IMPORTED_MODULE_3__Banner_vue___default.a,
         'store-items': __WEBPACK_IMPORTED_MODULE_4__Items_vue___default.a,
         'action-section': __WEBPACK_IMPORTED_MODULE_5__Action_vue___default.a,
-        'login-view': __WEBPACK_IMPORTED_MODULE_6__Auth_Login_vue___default.a
+        'auth-view': __WEBPACK_IMPORTED_MODULE_6__Auth_Forms_vue___default.a
     },
     name: 'app'
 });
@@ -54814,10 +54825,7 @@ var staticRenderFns = [
                       }
                     },
                     [
-                      _c("i", {
-                        staticClass: "fa fa-facebook-official",
-                        attrs: { "aria-hidden": "true" }
-                      }),
+                      _c("i", { staticClass: "fi-social-facebook" }),
                       _vm._v("   ")
                     ]
                   ),
@@ -54834,10 +54842,7 @@ var staticRenderFns = [
                       }
                     },
                     [
-                      _c("i", {
-                        staticClass: "fa fa-twitter-square",
-                        attrs: { "aria-hidden": "true" }
-                      }),
+                      _c("i", { staticClass: "fi-social-twitter" }),
                       _vm._v("   ")
                     ]
                   ),
@@ -54854,10 +54859,7 @@ var staticRenderFns = [
                       }
                     },
                     [
-                      _c("i", {
-                        staticClass: "fa fa-linkedin-square",
-                        attrs: { "aria-hidden": "true" }
-                      }),
+                      _c("i", { staticClass: "fi-social-linkedin" }),
                       _vm._v("   ")
                     ]
                   ),
@@ -54868,17 +54870,12 @@ var staticRenderFns = [
                       staticClass: "footer-foundation-icons",
                       staticStyle: { color: "#D7D8DA" },
                       attrs: {
-                        href: "http://www.yputube.com/",
+                        href: "http://www.youtube.com/",
                         target: "_blank",
                         id: "soc"
                       }
                     },
-                    [
-                      _c("i", {
-                        staticClass: "fa fa-youtube-square",
-                        attrs: { "aria-hidden": "true" }
-                      })
-                    ]
+                    [_c("i", { staticClass: "fi-social-youtube" })]
                   )
                 ]
               )
@@ -55512,9 +55509,9 @@ var staticRenderFns = [
                     "font-family": "'Bebas Neue', sans-serif",
                     cursor: "pointer"
                   },
-                  attrs: { "data-open": "account" }
+                  attrs: { "data-open": "register" }
                 },
-                [_vm._v("LOGIN NOW")]
+                [_vm._v("JOIN US NOW")]
               )
             ]
           )
@@ -55623,15 +55620,18 @@ module.exports = "/images/20.png?29400cee1067a70ae1771b18649d1522";
 module.exports = "/images/1.jpg?310b824bf221e116454c96e986b1d3d6";
 
 /***/ }),
-/* 120 */
+/* 120 */,
+/* 121 */,
+/* 122 */,
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(14)
 /* script */
-var __vue_script__ = __webpack_require__(121)
+var __vue_script__ = __webpack_require__(124)
 /* template */
-var __vue_template__ = __webpack_require__(122)
+var __vue_template__ = __webpack_require__(125)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -55648,7 +55648,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/Auth/Login.vue"
+Component.options.__file = "resources/assets/js/components/Auth/Forms.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -55657,9 +55657,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-55f43099", Component.options)
+    hotAPI.createRecord("data-v-2957fa5f", Component.options)
   } else {
-    hotAPI.reload("data-v-55f43099", Component.options)
+    hotAPI.reload("data-v-2957fa5f", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -55670,11 +55670,38 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 121 */
+/* 124 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -55724,7 +55751,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 122 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55812,15 +55839,17 @@ var render = function() {
               {
                 staticClass: "float-right",
                 staticStyle: { "margin-right": "10px" },
-                attrs: { "data-open": "exampleModal3" }
+                attrs: { "data-open": "register" }
               },
-              [_vm._v("Dont have an account?")]
+              [_vm._v("Don't have an account?")]
             )
           ]),
           _vm._v(" "),
           _vm._m(2)
         ]
-      )
+      ),
+      _vm._v(" "),
+      _vm._m(3)
     ])
   ])
 }
@@ -55835,14 +55864,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "button float-right success",
-        attrs: { "data-open": "exampleModal3" }
-      },
-      [_c("i", { staticClass: "fi-unlock" }), _vm._v(" Login  →")]
-    )
+    return _c("button", { staticClass: "button float-right success" }, [
+      _c("i", { staticClass: "fi-unlock" }),
+      _vm._v(" Login  →")
+    ])
   },
   function() {
     var _vm = this
@@ -55860,6 +55885,97 @@ var staticRenderFns = [
       },
       [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "reveal", attrs: { id: "register", "data-reveal": "" } },
+      [
+        _c("h5", [_c("i", { staticClass: "fi-plus" }), _vm._v(" Register")]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("form", [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "name" } }, [_vm._v("Fullname")]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "name",
+                "aria-describedby": "emailHelp",
+                placeholder: "Enter Name"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "email" } }, [_vm._v("Email Address")]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "email",
+                "aria-describedby": "emailHelp",
+                placeholder: "info@shopping.com"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "password" } }, [_vm._v("Password")]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "password",
+                id: "passwords",
+                placeholder: "Password"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("button", { staticClass: "button float-right" }, [
+            _c("i", { staticClass: "fi-pencil" }),
+            _vm._v(" Register")
+          ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "float-right success",
+              staticStyle: { "margin-right": "10px" },
+              attrs: { "data-open": "account" }
+            },
+            [
+              _c("i", {
+                staticClass: "fa fa-lock",
+                attrs: { "aria-hidden": "true" }
+              }),
+              _vm._v(" Have an account?")
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "close-button",
+            attrs: {
+              "data-close": "",
+              "aria-label": "Close reveal",
+              type: "button"
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -55867,7 +55983,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-55f43099", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-2957fa5f", module.exports)
   }
 }
 

@@ -31,17 +31,13 @@
                 </div>
                 <div class="medium-6 large-6 cell" style="text-align: right;font-size: 28px;">
                     <a href="http://www.facebook.com/" target="_blank" style="color:#D7D8DA;"
-                       class="footer-foundation-icons soc"><i class="fa fa-facebook-official"
-                                                              aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;</a>
+                       class="footer-foundation-icons soc"><i class="fi-social-facebook"></i>&nbsp;&nbsp;&nbsp;</a>
                     <a href="http://www.twitter.com/" target="_blank" style="color:#D7D8DA;" id="soc"
-                       class="footer-foundation-icons"><i class="fa fa-twitter-square"
-                                                          aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;</a>
+                       class="footer-foundation-icons"><i class="fi-social-twitter"></i>&nbsp;&nbsp;&nbsp;</a>
                     <a href="http://www.linkedin.com/" target="_blank" style="color:#D7D8DA;" id="soc"
-                       class="footer-foundation-icons"><i class="fa fa-linkedin-square"
-                                                          aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;</a>
-                    <a href="http://www.yputube.com/" target="_blank" style="color:#D7D8DA;" id="soc"
-                       class="footer-foundation-icons"><i class="fa fa-youtube-square"
-                                                          aria-hidden="true"></i></a>
+                       class="footer-foundation-icons"><i class="fi-social-linkedin"></i>&nbsp;&nbsp;&nbsp;</a>
+                    <a href="http://www.youtube.com/" target="_blank" style="color:#D7D8DA;" id="soc"
+                       class="footer-foundation-icons"><i class="fi-social-youtube"></i></a>
                 </div>
             </div>
         </div>

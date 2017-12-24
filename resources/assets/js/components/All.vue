@@ -12,10 +12,10 @@
                     <store-items></store-items>
                     <action-section></action-section>
                     <foot-data></foot-data>
-                    <login-view></login-view>
                 </div>
             </div>
         </div>
+    <auth-view></auth-view>
     </div>
 </template>
 
@@ -26,8 +26,13 @@
     import Banner from './Banner.vue'
     import Items from './Items.vue'
     import Action from './Action.vue'
-    import Login from './Auth/Login.vue'
+    import Forms from './Auth/Forms.vue'
     export default {
+        data() {
+            return {
+                component: 'login-view'
+            }
+        },
         components: {
             'main-menu': Menu,
             'banner-texts': BannerText,
@@ -35,8 +40,9 @@
             'banner-image': Banner,
             'store-items': Items,
             'action-section': Action,
-            'login-view': Login
+            'auth-view': Forms
         },
         name: 'app'
     }
 </script>
+
