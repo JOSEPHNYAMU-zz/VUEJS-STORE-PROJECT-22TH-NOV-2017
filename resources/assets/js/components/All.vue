@@ -1,22 +1,22 @@
 <template>
-    <div id="app">
-        <div class="row">
-            <div class="small-12 columns">
-                <div class="row">
-                    <div class="small-12 columns">
-                        <div class="header-unit" style="height:300px;">
-                            <banner-image></banner-image>
-                        </div>
+    <div class="row">
+        <main-menu></main-menu>
+        <div class="small-12 columns">
+            <div class="row">
+                <div class="small-12 columns">
+                    <div class="header-unit" style="height:300px;">
+                        <banner-image></banner-image>
                     </div>
-                    <banner-texts></banner-texts>
-                    <store-items></store-items>
-                    <action-section></action-section>
-                    <foot-data></foot-data>
                 </div>
+                <banner-texts></banner-texts>
+                <store-items></store-items>
+                <action-section></action-section>
+                <foot-data></foot-data>
             </div>
         </div>
-    <auth-view></auth-view>
+        <auth-view></auth-view>
     </div>
+
 </template>
 
 <script>
@@ -27,10 +27,23 @@
     import Items from './Items.vue'
     import Action from './Action.vue'
     import Forms from './Auth/Forms.vue'
+    import Auth from '../store/auth'
+    import Msg from '../helpers/msg'
+    import {post} from '../helpers/api'
+
     export default {
+        created() {
+            Auth.initialize();
+            if (this.auth.api_token && this.auth.name) {
+                this.$router.push('/shop')
+            } else {
+                this.$router.push('/')
+            }
+        },
         data() {
             return {
-                component: 'login-view'
+                component: 'login-view',
+                auth: Auth.state
             }
         },
         components: {
