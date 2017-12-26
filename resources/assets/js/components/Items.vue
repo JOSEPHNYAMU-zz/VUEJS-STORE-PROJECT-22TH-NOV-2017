@@ -4,6 +4,7 @@
         <div class="grid-x">
             <div class="small-2 columns"></div>
             <div class="small-8 columns">
+                <!-- Success Messages -->
                 <div v-if="msg.success" class="green">
                     {{msg.success}}
                 </div>
