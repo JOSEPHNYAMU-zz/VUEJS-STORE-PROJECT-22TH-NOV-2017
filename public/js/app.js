@@ -57210,7 +57210,7 @@ var render = function() {
     _c("div", { staticClass: "card" }, [
       _c("img", {
         staticClass: "imgs imgx",
-        attrs: { src: "https://www.cytonnmall.ml/" + _vm.item.image }
+        attrs: { src: "https://www.cytonnmall.ml/images/" + _vm.item.image }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "card-section" }, [
