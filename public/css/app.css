@@ -9078,11 +9078,10 @@ body {
 }
 
 .green {
-  background: #3c763d;
+  background: lawngreen;
   color: #ffffff;
   padding: 10px;
-  -webkit-box-shadow: 2px 2px 2px #000000;
-          box-shadow: 2px 2px 2px #000000;
+  border-radius: 6px;
   margin-bottom: 10px;
 }
 

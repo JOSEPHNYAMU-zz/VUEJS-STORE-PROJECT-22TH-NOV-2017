@@ -29,7 +29,7 @@
                         </button>
                         <button style="margin-right: 5px;" v-if="auth.role === 'Admin'"
                                 class="button alert float-left tiny"
-                                @click='removeItem(item.id)'><i class="fi-trash"></i>&nbsp;Del
+                                @click="$emit('remove-item')"><i class="fi-trash"></i>&nbsp;Del
                         </button>
                         <router-link class="button primary float-left tiny"
                                      v-if="auth.role === 'Admin'" :to="'/item/' + item.id + '/edit'"><i
@@ -76,15 +76,6 @@
             },
             inc() {
                 State.inc(this.item)
-            },
-            removeItem(value) {
-                let id = value;
-                this.$http.delete(`api/items/${value}`, id)
-                    .then(response => {
-                        if (response.data.delete) {
-                            Msg.setSuccess('The Item Has been Removed!')
-                        }
-                    })
             }
         }
     }

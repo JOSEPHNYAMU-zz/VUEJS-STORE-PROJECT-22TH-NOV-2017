@@ -4,16 +4,21 @@
 
         <div class="grid-x">
             <div class="small-1 column">
-
             </div>
             <div class="small-10 column">
                 <div class="small-12 columns"
                      style="text-align:center;color:#0A0A0A;">
+                    <div v-if="msg.success" class="green">
+                        {{msg.success}}
+                    </div>
+                    <div v-if="msg.error" class="red">
+                        {{msg.error}}
+                    </div>
                     <div class="grid-x padded paddy">
                         <div class="medium-6 large-12 cell" style="color:#ffffff;">
                             <div class="grid-container">
                                 <div class="grid-x grid-padding-x small-up-2 medium-up-4">
-                                    <store-items v-for="item in items" :item="item" :key="item.id"></store-items>
+                                    <store-items @remove-item="removeItem(item)" v-for="item in items" :item="item" :key="item.id"></store-items>
                                 </div>
                             </div>
                         </div>
@@ -58,6 +63,16 @@
                 msg: Msg.state,
                 error: {},
                 items: []
+            }
+        },
+        methods:{
+            removeItem(item) {
+                this.$http.delete('api/items/' + item.id)
+                    .then(response => {
+                        let index = this.items.indexOf(item);
+                        this.items.splice(index, 1);
+                        Msg.setSuccess('The Item Has been Removed!')
+                    })
             }
         }
     }

@@ -5133,7 +5133,7 @@ body {
   background: #3c763d;
   color: #ffffff;
   padding: 10px;
-  box-shadow: 2px 2px 2px #000000;
+  border-radius: 6px;
   margin-bottom: 10px; }
 
 .red {

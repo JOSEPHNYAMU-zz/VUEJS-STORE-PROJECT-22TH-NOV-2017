@@ -57429,14 +57429,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         },
         inc: function inc() {
             __WEBPACK_IMPORTED_MODULE_5__Cart_cart__["a" /* default */].inc(this.item);
-        },
-        removeItem: function removeItem(value) {
-            var id = value;
-            this.$http.delete('api/items/' + value, id).then(function (response) {
-                if (response.data.delete) {
-                    __WEBPACK_IMPORTED_MODULE_2__helpers_msg__["a" /* default */].setSuccess('The Item Has been Removed!');
-                }
-            });
         }
     }
 });
@@ -57542,7 +57534,7 @@ var render = function() {
                       staticStyle: { "margin-right": "5px" },
                       on: {
                         click: function($event) {
-                          _vm.removeItem(_vm.item.id)
+                          _vm.$emit("remove-item")
                         }
                       }
                     },
@@ -58494,6 +58486,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -58530,6 +58527,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             error: {},
             items: []
         };
+    },
+
+    methods: {
+        removeItem: function removeItem(item) {
+            var _this2 = this;
+
+            this.$http.delete('api/items/' + item.id).then(function (response) {
+                var index = _this2.items.indexOf(item);
+                _this2.items.splice(index, 1);
+                __WEBPACK_IMPORTED_MODULE_2__helpers_msg__["a" /* default */].setSuccess('The Item Has been Removed!');
+            });
+        }
     }
 });
 
@@ -58981,6 +58990,26 @@ var render = function() {
               staticStyle: { "text-align": "center", color: "#0A0A0A" }
             },
             [
+              _vm.msg.success
+                ? _c("div", { staticClass: "green" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.msg.success) +
+                        "\n                "
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.msg.error
+                ? _c("div", { staticClass: "red" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.msg.error) +
+                        "\n                "
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
               _c("div", { staticClass: "grid-x padded paddy" }, [
                 _c(
                   "div",
@@ -58999,7 +59028,12 @@ var render = function() {
                         _vm._l(_vm.items, function(item) {
                           return _c("store-items", {
                             key: item.id,
-                            attrs: { item: item }
+                            attrs: { item: item },
+                            on: {
+                              "remove-item": function($event) {
+                                _vm.removeItem(item)
+                              }
+                            }
                           })
                         })
                       )
