@@ -36,7 +36,7 @@
                         <small>{{item.title}}</small>
                     </td>
                     <td>
-                        <small>Ksh. {{item.price}}</small>
+                        <small>Ksh. {{item.price | formatMoney}}</small>
                     </td>
                     <td>
                         <small>{{item.qty}}</small>
@@ -59,7 +59,7 @@
         <div class="reveal" id="checks" data-reveal>
             <h5 class="greens"><i class="fi-check"></i>&nbsp;Checkout Successful</h5>
             <hr/>
-            Hello {{auth.name}},<br/>
+            Hello,<br/>
             Thank You for shopping with us!!...You have successfully purchased the goods at Cytonn Mall.
             Your Order will be processed in few minutes.<br/></br>
             <strong>Cytonn Mall<br/>

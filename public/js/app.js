@@ -56392,7 +56392,11 @@ var render = function() {
                       _c("td", [_c("small", [_vm._v(_vm._s(item.title))])]),
                       _vm._v(" "),
                       _c("td", [
-                        _c("small", [_vm._v("Ksh. " + _vm._s(item.price))])
+                        _c("small", [
+                          _vm._v(
+                            "Ksh. " + _vm._s(_vm._f("formatMoney")(item.price))
+                          )
+                        ])
                       ]),
                       _vm._v(" "),
                       _c("td", [_c("small", [_vm._v(_vm._s(item.qty))])]),
@@ -56442,26 +56446,7 @@ var render = function() {
           _c("br")
         ]),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "reveal", attrs: { id: "checks", "data-reveal": "" } },
-      [
-        _vm._m(6),
-        _vm._v(" "),
-        _c("hr"),
-        _vm._v("\n        Hello " + _vm._s(_vm.auth.name) + ","),
-        _c("br"),
-        _vm._v(
-          "\n        Thank You for shopping with us!!...You have successfully purchased the goods at Cytonn Mall.\n        Your Order will be processed in few minutes."
-        ),
-        _c("br"),
-        _c("br"),
-        _vm._v(" "),
-        _vm._m(7),
-        _vm._v(" "),
-        _vm._m(8)
-      ]
-    )
+    _vm._m(6)
   ])
 }
 var staticRenderFns = [
@@ -56536,38 +56521,45 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("h5", { staticClass: "greens" }, [
-      _c("i", { staticClass: "fi-check" }),
-      _vm._v(" Checkout Successful")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("strong", [
-      _vm._v("Cytonn Mall"),
-      _c("br"),
-      _vm._v("\n            Fedha Plaza"),
-      _c("br"),
-      _vm._v("\n            0722563684")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c(
-      "button",
-      {
-        staticClass: "close-button",
-        attrs: {
-          "data-close": "",
-          "aria-label": "Close reveal",
-          type: "button"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      "div",
+      { staticClass: "reveal", attrs: { id: "checks", "data-reveal": "" } },
+      [
+        _c("h5", { staticClass: "greens" }, [
+          _c("i", { staticClass: "fi-check" }),
+          _vm._v(" Checkout Successful")
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v("\n        Hello,"),
+        _c("br"),
+        _vm._v(
+          "\n        Thank You for shopping with us!!...You have successfully purchased the goods at Cytonn Mall.\n        Your Order will be processed in few minutes."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(" "),
+        _c("strong", [
+          _vm._v("Cytonn Mall"),
+          _c("br"),
+          _vm._v("\n            Fedha Plaza"),
+          _c("br"),
+          _vm._v("\n            0722563684")
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "close-button",
+            attrs: {
+              "data-close": "",
+              "aria-label": "Close reveal",
+              type: "button"
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        )
+      ]
     )
   }
 ]
