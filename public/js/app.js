@@ -58486,7 +58486,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -59045,8 +59044,6 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "small-1 column" })
       ]),
-      _vm._v(" "),
-      _c("hr"),
       _vm._v(" "),
       _c("footer-view")
     ],
