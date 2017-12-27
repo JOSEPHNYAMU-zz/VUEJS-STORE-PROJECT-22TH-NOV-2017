@@ -58451,6 +58451,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Cart_cart__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Footer_vue__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Footer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__Footer_vue__);
 //
 //
 //
@@ -58483,6 +58485,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 
@@ -58510,7 +58514,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     components: {
         'main-menu': __WEBPACK_IMPORTED_MODULE_0__MenuLogged_vue___default.a,
-        'store-items': __WEBPACK_IMPORTED_MODULE_4__Item_vue___default.a
+        'store-items': __WEBPACK_IMPORTED_MODULE_4__Item_vue___default.a,
+        'footer-view': __WEBPACK_IMPORTED_MODULE_8__Footer_vue___default.a
     },
     data: function data() {
         return {
@@ -59038,7 +59043,9 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "small-1 column" })
-      ])
+      ]),
+      _vm._v(" "),
+      _c("footer-view")
     ],
     1
   )

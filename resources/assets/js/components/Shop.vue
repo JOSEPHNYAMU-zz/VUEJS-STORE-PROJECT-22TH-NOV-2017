@@ -28,6 +28,7 @@
             <div class="small-1 column">
             </div>
         </div>
+        <footer-view></footer-view>
     </div>
 </template>
 <script>
@@ -39,6 +40,7 @@
     import Vue from 'vue'
     import _ from 'lodash'
     import State from '../Cart/cart'
+    import Footer from './Footer.vue'
 
     export default {
         created() {
@@ -55,7 +57,8 @@
         },
         components: {
             'main-menu': Menu,
-            'store-items': Item
+            'store-items': Item,
+            'footer-view': Footer
         },
         data() {
             return {
