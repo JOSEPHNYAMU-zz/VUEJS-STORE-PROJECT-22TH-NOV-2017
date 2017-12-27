@@ -10581,7 +10581,7 @@ module.exports = function normalizeComponent (
 
 
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue_resource__["a" /* default */]);
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.http.options.root = 'https://www.cytonnmall.ml';
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.http.options.root = 'http://mall.net';
 
 function post(url, data) {
     return __WEBPACK_IMPORTED_MODULE_0_axios___default()({
@@ -56379,10 +56379,7 @@ var render = function() {
                             "border-radius": "3px",
                             "margin-bottom": "8px"
                           },
-                          attrs: {
-                            src:
-                              "https://www.cytonnmall.ml/images/" + item.image
-                          }
+                          attrs: { src: "http://mall.net/images/" + item.image }
                         })
                       ]),
                       _vm._v(" "),
@@ -57445,7 +57442,7 @@ var render = function() {
     _c("div", { staticClass: "card" }, [
       _c("img", {
         staticClass: "imgs imgx",
-        attrs: { src: "https://www.cytonnmall.ml/images/" + _vm.item.image }
+        attrs: { src: "http://mall.net/images/" + _vm.item.image }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "card-section" }, [
