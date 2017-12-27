@@ -56189,7 +56189,10 @@ var render = function() {
                             "border-radius": "3px",
                             "margin-bottom": "8px"
                           },
-                          attrs: { src: "http://mall.net/images/" + item.image }
+                          attrs: {
+                            src:
+                              "https://www.cytonnmall.ml/images/" + item.image
+                          }
                         })
                       ]),
                       _vm._v(" "),
