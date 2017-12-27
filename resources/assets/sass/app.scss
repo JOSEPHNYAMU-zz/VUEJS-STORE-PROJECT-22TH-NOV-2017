@@ -4,15 +4,16 @@
 @import "settings";
 // Foundation Import
 @import "../../../node_modules/foundation-sites/assets/foundation";
-//Normalize Import
-//@import "../../../node_modules/normalize.scss/normalize";
+
+body {
+  font-family: 'Proxima Nova', Georgia, sans-serif;
+}
 
 .dropdown.menu > li.is-dropdown-submenu-parent > a::after {border: none;}
 .disabled{
   opacity: 0.75;
   cursor: not-allowed;
 }
-
 .alert-danger{
   color: #ffffff;
   background: #a94442;

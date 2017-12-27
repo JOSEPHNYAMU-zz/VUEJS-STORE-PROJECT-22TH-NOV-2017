@@ -9058,6 +9058,10 @@ a.thumbnail image {
   }
 }
 
+body {
+  font-family: 'Proxima Nova', Georgia, sans-serif;
+}
+
 .dropdown.menu > li.is-dropdown-submenu-parent > a::after {
   border: none;
 }
