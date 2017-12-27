@@ -3,7 +3,7 @@ import Vue from 'vue'
 import Auth from '../store/auth'
 import VueResource from 'vue-resource'
 Vue.use(VueResource);
-Vue.http.options.root = 'https://www.cytonnmall.ml'
+Vue.http.options.root = 'http://mall.net'
 export function post(url, data) {
     return axios({
         method: 'POST',

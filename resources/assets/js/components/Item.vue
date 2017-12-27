@@ -1,0 +1,92 @@
+<template>
+    <div class="cell">
+        <div class="card">
+            <img class="imgs imgx" :src="'http://mall.net/images/' + item.image">
+            <div class="card-section">
+                <div class="grid-x">
+                    <div class="small-6 columns float-left">
+                        <strong><h6 class="blue">{{item.title}}</h6></strong>
+                    </div>
+                    <div class="small-6 columns float-right align-right right">
+                        <small><strong>{{item.price | formatMoney}}/=</strong></small>
+                        <small v-if="qtyInCart > 0">X{{qtyInCart}}</small>
+                    </div>
+                    <div class="small-12 columns" style="border-top: 1px solid #f2f2f2;">
+                        <small><i>{{item.description}}</i></small>
+                    </div>
+
+                    <div class="small-12 columns">
+                        <br/>
+                        <button style="margin-left: 5px;" class="button primary float-right tiny"
+                                @click="addToCart" v-if="qtyInCart == 0"><i class="fi-shopping-cart"></i>&nbsp;Buy
+                        </button>
+                        <span v-else>
+                            <button class="button tiny alert" @click="dec"><i class="fi-minus"></i></button>
+                            <button class="button tiny primary" @click="inc"><i class="fi-plus"></i></button>
+                                            </span>
+                        <button style="margin-left: 5px;" class="button success float-right tiny"><i
+                                class="fi-eye"></i>&nbsp;View
+                        </button>
+                        <button style="margin-right: 5px;" v-if="auth.role === 'Admin'"
+                                class="button alert float-left tiny"
+                                @click='removeItem(item.id)'><i class="fi-trash"></i>&nbsp;Del
+                        </button>
+                        <router-link class="button primary float-left tiny"
+                                     v-if="auth.role === 'Admin'" :to="'/item/' + item.id + '/edit'"><i
+                                class="fi-pencil"></i>&nbsp;Edit
+                        </router-link>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    import Auth from '../store/auth'
+    import {post} from '../helpers/api'
+    import {get, byMethod} from '../helpers/api'
+    import Msg from '../helpers/msg'
+    import Vue from 'vue'
+    import _ from 'lodash'
+    import State from '../Cart/cart'
+    export default {
+        props: ['item'],
+        data() {
+            return {
+                shared: State.data,
+                auth: Auth.state
+            }
+        },
+        computed: {
+            qtyInCart() {
+                var found = _.find(this.shared.cart, ['id', this.item.id]);
+                if (typeof found == 'object') {
+                    return found.qty
+                } else {
+                    return 0
+                }
+            }
+        },
+        methods: {
+            addToCart() {
+                State.add(this.item)
+            },
+            dec() {
+                State.dec(this.item)
+            },
+            inc() {
+                State.inc(this.item)
+            },
+            removeItem(value) {
+                let id = value;
+                this.$http.delete(`api/items/${value}`, id)
+                    .then(response => {
+                        if (response.data.delete) {
+                            Msg.setSuccess('The Item Has been Removed!')
+                        }
+                    })
+            }
+        }
+    }
+
+</script>

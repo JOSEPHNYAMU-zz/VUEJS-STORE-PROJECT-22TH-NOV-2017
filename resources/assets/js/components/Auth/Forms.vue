@@ -69,6 +69,7 @@
     import Msg from '../../helpers/msg'
     import {post} from '../../helpers/api'
     import Auth from '../../store/auth'
+    import Vue from 'vue'
     export default {
         data(){
             return {

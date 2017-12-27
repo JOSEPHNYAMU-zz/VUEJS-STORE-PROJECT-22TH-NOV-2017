@@ -28,16 +28,12 @@
                     <li>
                         <a href="#" style="color:#ffffff;"><i class="fi-shopping-cart"></i>&nbsp;</a>
                         <ul class="menu vertical" style="width:500px;">
-
-                            <h5>1&nbsp;<i class="fa fa-shopping-cart" aria-hidden="true"></i></h5>
-                            <hr/>
-                            <p class="lead">I have another modal inside of me!</p>
-                            <button class="button float-right" data-open="exampleModal3"><i class="fa fa-paypal" aria-hidden="true"></i>&nbsp;Checkout</button>
+                            <div class="cart">
+                                <item-cart></item-cart>
+                            </div>
 
                         </ul>
-
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -49,7 +45,9 @@
     import {post} from '../helpers/api'
     import {get} from '../helpers/api'
     import Vue from 'vue'
-
+    import Cart from './Cart.vue'
+    import _ from 'lodash'
+    import State from '../Cart/cart'
 
     Vue.directive('data-dropdown-menu', {
         bind: function (el) {
@@ -60,7 +58,10 @@
         }
     });
 
-    export default {
 
+    export default {
+        components:{
+            'item-cart': Cart
+        }
     }
 </script>
