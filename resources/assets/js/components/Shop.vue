@@ -28,6 +28,7 @@
             <div class="small-1 column">
             </div>
         </div>
+        <hr/>
         <footer-view></footer-view>
     </div>
 </template>
