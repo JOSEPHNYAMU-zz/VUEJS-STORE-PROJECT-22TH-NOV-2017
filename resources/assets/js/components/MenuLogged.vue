@@ -94,7 +94,7 @@
                         if (res.data.signOut) {
                             Auth.remove();
                             this.$router.push('/');
-//                            location.reload()
+                          location.reload()
 
                         }
                     })
