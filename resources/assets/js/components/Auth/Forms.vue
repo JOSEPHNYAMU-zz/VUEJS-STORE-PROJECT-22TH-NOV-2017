@@ -1,9 +1,8 @@
 <template>
     <div class="small-12 columns" id="pad">
         <div class="grid-x">
-
             <!-- Login -->
-            <div class="reveal" id="account" data-reveal>
+            <div class="reveal mod" id="account" data-reveal>
                 <h5><i class="fi-lock"></i>&nbsp;Login</h5>
                 <hr/>
 
@@ -18,13 +17,16 @@
 
                     <div class="form-group">
                         <label for="emails">Email Address</label>
-                        <input type="text" class="form-control" required id="emails" v-model="form.email" aria-describedby="emails" placeholder="info@shopping.com">
+                        <input type="text" class="form-control" required id="emails" v-model="form.email"
+                               aria-describedby="emails" placeholder="info@shopping.com">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" required id="password" v-model="form.password" placeholder="Password">
+                        <input type="password" class="form-control" required id="password" v-model="form.password"
+                               placeholder="Password">
                     </div>
-                    <button type="submit" :disabled="isProcessing" class="button float-right success"><i class="fi-unlock"></i>&nbsp;Login &nbsp;&rarr;</button>
+                    <button type="submit" data-close class="button float-right success"><i class="fi-unlock"></i>&nbsp;Login &nbsp;&rarr;
+                    </button>
                     <a class="float-right" data-open="register" style="margin-right: 10px;">Don't have an account?</a>
                 </form>
                 <button class="close-button" data-close aria-label="Close reveal" type="button">
@@ -33,7 +35,7 @@
             </div>
 
             <!-- Register -->
-            <div class="reveal" id="register" data-reveal>
+            <div class="reveal mod" id="register" data-reveal>
                 <h5><i class="fi-plus"></i>&nbsp;Register Now</h5>
                 <hr/>
                 <form @submit.prevent="register" method="post">
@@ -45,18 +47,23 @@
                     </div>
                     <div class="form-group">
                         <label for="name">Fullname</label>
-                        <input type="text" class="form-control" required id="name" v-model="form.name" aria-describedby="name" placeholder="Enter Name">
+                        <input type="text" class="form-control" required id="name" v-model="form.name"
+                               aria-describedby="name" placeholder="Enter Name">
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="text" class="form-control" required id="email" v-model="form.email" aria-describedby="email" placeholder="info@shopping.com">
+                        <input type="text" class="form-control" required id="email" v-model="form.email"
+                               aria-describedby="email" placeholder="info@shopping.com">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" required id="passwords" v-model="form.password" placeholder="Password">
+                        <input type="password" class="form-control" required id="passwords" v-model="form.password"
+                               placeholder="Password">
                     </div>
-                    <button type="submit" :disabled="isProcessing" class="button float-right"><i class="fi-pencil"></i>&nbsp;Register</button>
-                    <a class="float-right success" style="margin-right: 10px;" data-open="account"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Login Here</a>
+                    <button type="submit" :disabled="isProcessing" class="button float-right"><i class="fi-pencil"></i>&nbsp;Register
+                    </button>
+                    <a class="float-right success" style="margin-right: 10px;" data-open="account"><i class="fa fa-lock"
+                                                                                                      aria-hidden="true"></i>&nbsp;Login Here</a>
                 </form>
                 <button class="close-button" data-close aria-label="Close reveal" type="button">
                     <span aria-hidden="true">&times;</span>
@@ -70,26 +77,31 @@
     import {post} from '../../helpers/api'
     import Auth from '../../store/auth'
     import Vue from 'vue'
+    import Foundation from 'foundation-sites'
+
     export default {
-        data(){
+        data() {
             return {
-                form:{
+                form: {
                     name: '',
                     email: '',
                     password: ''
                 },
                 msg: Msg.state,
                 auth: Auth.state,
-                error:{},
-                isProcessing:false
+                error: {},
+                isProcessing: false
             }
         },
-        methods:{
+        mounted() {
+            $(this.$el).foundation();
+        },
+        methods: {
             register() {
                 this.isProcessing = true;
                 this.error = {};
                 post(`/api/register`, this.form)
-                    .then ((res) => {
+                    .then((res) => {
                         if (res.data.registered) {
                             this.form = '';
                             Msg.setSuccess('User Successfully added!')
@@ -110,11 +122,12 @@
                 this.isProcessing = true;
                 this.error = {};
                 post(`/api/login`, this.form)
-                    .then ((res) => {
+                    .then((res) => {
                         if (res.data.authenticated) {
                             this.$router.push('/shop');
                             Auth.set(res.data.api_token, res.data.name, res.data.role);
                             Msg.setSuccess('Login Successful!...Welcome to Cytonn Mall, your shopping Hub!!')
+                            this.isProcessing = false
                         }
                         this.isProcessing = false
 

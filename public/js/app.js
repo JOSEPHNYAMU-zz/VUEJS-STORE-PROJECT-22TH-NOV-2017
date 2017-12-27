@@ -10889,8 +10889,10 @@ module.exports = {
 
 
 
+
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue_resource__["a" /* default */]);
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.http.options.root = 'https://www.cytonnmall.ml';
+
 function post(url, data) {
     return __WEBPACK_IMPORTED_MODULE_0_axios___default()({
         method: 'POST',
@@ -10901,6 +10903,7 @@ function post(url, data) {
         }
     });
 }
+
 function get(url, params) {
     return __WEBPACK_IMPORTED_MODULE_0_axios___default()({
         method: 'GET',
@@ -10908,6 +10911,7 @@ function get(url, params) {
         params: params
     });
 }
+
 function byMethod(method, url, data) {
     return __WEBPACK_IMPORTED_MODULE_0_axios___default()({
         method: method,
@@ -43774,6 +43778,10 @@ window.Vue = __webpack_require__(10);
 Vue.component('main-index', __webpack_require__(119));
 var app = new Vue({
     el: '#app',
+    mounted: function mounted() {
+        $(this.$el).foundation();
+    },
+
     router: __WEBPACK_IMPORTED_MODULE_0__router__["a" /* default */]
 });
 
@@ -43786,6 +43794,7 @@ try {
     window.$ = window.jQuery = __webpack_require__(0);
 
     __webpack_require__(43);
+    __webpack_require__(134);
 } catch (e) {}
 window.axios = __webpack_require__(30);
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -43796,14 +43805,6 @@ if (token) {
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
-
-// $(document).ready(function () {
-//     $('#input-search:first-child').hide();
-//
-//     $('#search-button').on('click', function () {
-//         $('#input-search:first-child').toggle();
-//     });
-// });
 
 /***/ }),
 /* 42 */
@@ -54437,6 +54438,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -54446,15 +54454,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-__WEBPACK_IMPORTED_MODULE_2_vue___default.a.directive('data-dropdown-menu', {
-    bind: function bind(el) {
-        new Foundation.DropdownMenu($(el));
-    },
-    unbind: function unbind(el) {
-        $(el).foundation.destroy();
-    }
-});
 /* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        $(this.$el).foundation();
+    },
+
     components: {
         'item-cart': __WEBPACK_IMPORTED_MODULE_3__Cart_vue___default.a
     }
@@ -56365,18 +56369,12 @@ var render = function() {
             _c(
               "ul",
               {
-                directives: [
-                  {
-                    name: "data-dropdown-menu",
-                    rawName: "v-data-dropdown-menu"
-                  }
-                ],
                 staticClass: "dropdown menu",
                 staticStyle: {
                   "background-color": "rgba(0,0,0,0.5)",
                   padding: "10px"
                 },
-                attrs: { id: "drop-down" }
+                attrs: { id: "drop-down", "data-dropdown-menu": "" }
               },
               [
                 _vm._m(1),
@@ -56394,7 +56392,7 @@ var render = function() {
                       { staticClass: "menus", attrs: { to: "/contact" } },
                       [
                         _c("i", { staticClass: "fi-telephone" }),
-                        _vm._v(" CONTACT US\n                ")
+                        _vm._v(" CONTACT US\n                    ")
                       ]
                     )
                   ],
@@ -56417,18 +56415,12 @@ var render = function() {
             _c(
               "ul",
               {
-                directives: [
-                  {
-                    name: "data-dropdown-menu",
-                    rawName: "v-data-dropdown-menu"
-                  }
-                ],
                 staticClass: "dropdown menu",
                 staticStyle: {
                   "background-color": "rgba(0,0,0,0.5)",
                   padding: "20px"
                 },
-                attrs: { "data-options": "disableHover:true;clickOpen:true" }
+                attrs: { "data-dropdown-menu": "" }
               },
               [
                 _vm._m(3),
@@ -57237,7 +57229,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _vm.qtyInCart > 0
-                ? _c("small", [_vm._v("X" + _vm._s(_vm.qtyInCart))])
+                ? _c("small", { staticClass: "price" }, [
+                    _vm._v("x" + _vm._s(_vm.qtyInCart))
+                  ])
                 : _vm._e()
             ]
           ),
@@ -57525,6 +57519,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_auth__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_foundation_sites__ = __webpack_require__(43);
 //
 //
 //
@@ -57592,6 +57587,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 
@@ -57610,6 +57614,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             error: {},
             isProcessing: false
         };
+    },
+    mounted: function mounted() {
+        $(this.$el).foundation();
     },
 
     methods: {
@@ -57642,6 +57649,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this2.$router.push('/shop');
                     __WEBPACK_IMPORTED_MODULE_2__store_auth__["a" /* default */].set(res.data.api_token, res.data.name, res.data.role);
                     __WEBPACK_IMPORTED_MODULE_0__helpers_msg__["a" /* default */].setSuccess('Login Successful!...Welcome to Cytonn Mall, your shopping Hub!!');
+                    _this2.isProcessing = false;
                 }
                 _this2.isProcessing = false;
             }).catch(function (err) {
@@ -57668,7 +57676,10 @@ var render = function() {
     _c("div", { staticClass: "grid-x" }, [
       _c(
         "div",
-        { staticClass: "reveal", attrs: { id: "account", "data-reveal": "" } },
+        {
+          staticClass: "reveal mod",
+          attrs: { id: "account", "data-reveal": "" }
+        },
         [
           _vm._m(0),
           _vm._v(" "),
@@ -57773,14 +57784,7 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "button float-right success",
-                  attrs: { type: "submit", disabled: _vm.isProcessing }
-                },
-                [_c("i", { staticClass: "fi-unlock" }), _vm._v(" Login  →")]
-              ),
+              _vm._m(1),
               _vm._v(" "),
               _c(
                 "a",
@@ -57794,15 +57798,18 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm._m(1)
+          _vm._m(2)
         ]
       ),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "reveal", attrs: { id: "register", "data-reveal": "" } },
+        {
+          staticClass: "reveal mod",
+          attrs: { id: "register", "data-reveal": "" }
+        },
         [
-          _vm._m(2),
+          _vm._m(3),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
@@ -57943,14 +57950,17 @@ var render = function() {
                   staticClass: "button float-right",
                   attrs: { type: "submit", disabled: _vm.isProcessing }
                 },
-                [_c("i", { staticClass: "fi-pencil" }), _vm._v(" Register")]
+                [
+                  _c("i", { staticClass: "fi-pencil" }),
+                  _vm._v(" Register\n                ")
+                ]
               ),
               _vm._v(" "),
-              _vm._m(3)
+              _vm._m(4)
             ]
           ),
           _vm._v(" "),
-          _vm._m(4)
+          _vm._m(5)
         ]
       )
     ])
@@ -57962,6 +57972,22 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("h5", [_c("i", { staticClass: "fi-lock" }), _vm._v(" Login")])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "button float-right success",
+        attrs: { type: "submit", "data-close": "" }
+      },
+      [
+        _c("i", { staticClass: "fi-unlock" }),
+        _vm._v(" Login  →\n                ")
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -58344,6 +58370,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -58353,13 +58382,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-__WEBPACK_IMPORTED_MODULE_2_vue___default.a.directive('data-dropdown-menu', {
-    bind: function bind(el) {
-        new Foundation.DropdownMenu($(el));
-    }
-});
+//    Vue.directive('data-dropdown-menu', {
+//        bind: function (el) {
+//            new Foundation.DropdownMenu($(el));
+//        }
+//        , unbind: function (el) {
+//            $(el).foundation.destroy()
+//        }
+//    });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        $(this.$el).foundation();
+    },
+
     components: {
         'item-cart': __WEBPACK_IMPORTED_MODULE_3__Cart_vue___default.a
     },
@@ -58385,7 +58421,6 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.directive('data-dropdown-menu', {
                 if (res.data.signOut) {
                     __WEBPACK_IMPORTED_MODULE_0__store_auth__["a" /* default */].remove();
                     _this.$router.push('/');
-                    //                          location.reload()
                 }
             });
         }
@@ -58428,18 +58463,12 @@ var render = function() {
             _c(
               "ul",
               {
-                directives: [
-                  {
-                    name: "data-dropdown-menu",
-                    rawName: "v-data-dropdown-menu"
-                  }
-                ],
                 staticClass: "dropdown menu",
                 staticStyle: {
                   "background-color": "rgba(0,0,0,0.5)",
                   padding: "10px"
                 },
-                attrs: { id: "drop-down" }
+                attrs: { id: "drop-down", "data-dropdown-menu": "" }
               },
               [
                 _c("li", {
@@ -58514,18 +58543,15 @@ var render = function() {
             _c(
               "ul",
               {
-                directives: [
-                  {
-                    name: "data-dropdown-menu",
-                    rawName: "v-data-dropdown-menu"
-                  }
-                ],
                 staticClass: "dropdown menu",
                 staticStyle: {
                   "background-color": "rgba(0,0,0,0.5)",
                   padding: "20px"
                 },
-                attrs: { "data-options": "disableHover:true;clickOpen:true" }
+                attrs: {
+                  "data-options": "disableHover:true;clickOpen:true",
+                  "data-dropdown-menu": ""
+                }
               },
               [
                 _c(
@@ -59669,6 +59695,132 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-6e5edfce", module.exports)
   }
 }
+
+/***/ }),
+/* 134 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;;(function(root, factory) {
+  if (true) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else if (typeof exports === 'object') {
+    module.exports = factory(require('jquery'));
+  } else {
+    root.MotionUI = factory(root.jQuery);
+  }
+}(this, function($) {
+'use strict';
+
+// Polyfill for requestAnimationFrame
+(function() {
+  if (!Date.now)
+    Date.now = function() { return new Date().getTime(); };
+
+  var vendors = ['webkit', 'moz'];
+  for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
+      var vp = vendors[i];
+      window.requestAnimationFrame = window[vp+'RequestAnimationFrame'];
+      window.cancelAnimationFrame = (window[vp+'CancelAnimationFrame']
+                                 || window[vp+'CancelRequestAnimationFrame']);
+  }
+  if (/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent)
+    || !window.requestAnimationFrame || !window.cancelAnimationFrame) {
+    var lastTime = 0;
+    window.requestAnimationFrame = function(callback) {
+        var now = Date.now();
+        var nextTime = Math.max(lastTime + 16, now);
+        return setTimeout(function() { callback(lastTime = nextTime); },
+                          nextTime - now);
+    };
+    window.cancelAnimationFrame = clearTimeout;
+  }
+})();
+
+var initClasses   = ['mui-enter', 'mui-leave'];
+var activeClasses = ['mui-enter-active', 'mui-leave-active'];
+
+// Find the right "transitionend" event for this browser
+var endEvent = (function() {
+  var transitions = {
+    'transition': 'transitionend',
+    'WebkitTransition': 'webkitTransitionEnd',
+    'MozTransition': 'transitionend',
+    'OTransition': 'otransitionend'
+  }
+  var elem = window.document.createElement('div');
+
+  for (var t in transitions) {
+    if (typeof elem.style[t] !== 'undefined') {
+      return transitions[t];
+    }
+  }
+
+  return null;
+})();
+
+function animate(isIn, element, animation, cb) {
+  element = $(element).eq(0);
+
+  if (!element.length) return;
+
+  if (endEvent === null) {
+    isIn ? element.show() : element.hide();
+    cb();
+    return;
+  }
+
+  var initClass = isIn ? initClasses[0] : initClasses[1];
+  var activeClass = isIn ? activeClasses[0] : activeClasses[1];
+
+  // Set up the animation
+  reset();
+  element.addClass(animation);
+  element.css('transition', 'none');
+  requestAnimationFrame(function() {
+    element.addClass(initClass);
+    if (isIn) element.show();
+  });
+
+  // Start the animation
+  requestAnimationFrame(function() {
+    element[0].offsetWidth;
+    element.css('transition', '');
+    element.addClass(activeClass);
+  });
+
+  // Clean up the animation when it finishes
+  element.one('transitionend', finish);
+
+  // Hides the element (for out animations), resets the element, and runs a callback
+  function finish() {
+    if (!isIn) element.hide();
+    reset();
+    if (cb) cb.apply(element);
+  }
+
+  // Resets transitions and removes motion-specific classes
+  function reset() {
+    element[0].style.transitionDuration = 0;
+    element.removeClass(initClass + ' ' + activeClass + ' ' + animation);
+  }
+}
+
+var MotionUI = {
+  animateIn: function(element, animation, cb) {
+    animate(true, element, animation, cb);
+  },
+
+  animateOut: function(element, animation, cb) {
+    animate(false, element, animation, cb);
+  }
+}
+
+return MotionUI;
+}));
+
 
 /***/ })
 /******/ ]);

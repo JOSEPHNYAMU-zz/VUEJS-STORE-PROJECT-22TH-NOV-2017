@@ -9,7 +9,7 @@
                     </div>
                     <div class="small-6 columns float-right align-right right">
                         <small><strong>{{item.price | formatMoney}}/=</strong></small>
-                        <small v-if="qtyInCart > 0">X{{qtyInCart}}</small>
+                        <small class="price" v-if="qtyInCart > 0">x{{qtyInCart}}</small>
                     </div>
                     <div class="small-12 columns" style="border-top: 1px solid #f2f2f2;">
                         <small><i>{{item.description}}</i></small>

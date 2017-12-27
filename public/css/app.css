@@ -9221,3 +9221,18 @@ ul {
   transform: scale(1.1);
 }
 
+.mod {
+  top: 10% !important;
+  left: 0 !important;
+  right: 0 !important;
+  position: absolute;
+}
+
+.price {
+  margin-left: 5px;
+  padding: 3px;
+  background-color: green;
+  color: #ffffff;
+  border-radius: 3px;
+}
+

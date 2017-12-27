@@ -3,6 +3,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('foundation-sites');
+    require('motion-ui');
 } catch (e) {
 }
 window.axios = require('axios');
@@ -14,11 +15,3 @@ if (token) {
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
-
-// $(document).ready(function () {
-//     $('#input-search:first-child').hide();
-//
-//     $('#search-button').on('click', function () {
-//         $('#input-search:first-child').toggle();
-//     });
-// });
