@@ -50,8 +50,8 @@
             <div class="green" style="width:auto;">
                 <span><strong>Total</strong></span>&nbsp;&nbsp;<span>Ksh. {{total | formatMoney}}</span></div>
             <div v-if="auth.role != 'User'" >
-            <button class="button tiny primary float-right" data-open="account"><i class="fi-unlock"></i>&nbsp;Login</button>
-            <button style="margin-right: 7px;" data-open="register" class="button tiny alert float-right"><i class="fi-pencil"></i>&nbsp;Register</button>
+            <button class="button tiny primary float-right" data-open="account"><i class="fi-unlock"></i>&nbsp;Login to Checkout</button>
+            <button style="margin-right: 7px;" data-open="register" class="button tiny alert float-right"><i class="fi-pencil"></i>&nbsp;Register to Checkout</button>
             </div>
             <button v-if="auth.role == 'User'" data-open="checks" class="button tiny success float-right"><i class="fi-paypal"></i>&nbsp;Checkout</button>
             <br/>

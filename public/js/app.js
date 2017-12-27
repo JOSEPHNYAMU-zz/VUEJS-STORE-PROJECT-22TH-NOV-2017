@@ -56339,7 +56339,7 @@ var staticRenderFns = [
         staticClass: "button tiny primary float-right",
         attrs: { "data-open": "account" }
       },
-      [_c("i", { staticClass: "fi-unlock" }), _vm._v(" Login")]
+      [_c("i", { staticClass: "fi-unlock" }), _vm._v(" Login to Checkout")]
     )
   },
   function() {
@@ -56353,7 +56353,7 @@ var staticRenderFns = [
         staticStyle: { "margin-right": "7px" },
         attrs: { "data-open": "register" }
       },
-      [_c("i", { staticClass: "fi-pencil" }), _vm._v(" Register")]
+      [_c("i", { staticClass: "fi-pencil" }), _vm._v(" Register to Checkout")]
     )
   },
   function() {
