@@ -54471,6 +54471,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        $(this.$el).foundation();
+    },
     created: function created() {
         var _this = this;
 
@@ -57851,8 +57854,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             },
             msg: __WEBPACK_IMPORTED_MODULE_0__helpers_msg__["a" /* default */].state,
             auth: __WEBPACK_IMPORTED_MODULE_2__store_auth__["a" /* default */].state,
-            error: {},
-            isProcessing: false
+            error: {}
         };
     },
     mounted: function mounted() {
@@ -57870,13 +57872,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this.form = '';
                     __WEBPACK_IMPORTED_MODULE_0__helpers_msg__["a" /* default */].setSuccess('User Successfully added!');
                 }
-                _this.isProcessing = false;
             }).catch(function (err) {
                 if (err.response.status === 422) {
                     _this.error = err.response.data;
                     __WEBPACK_IMPORTED_MODULE_0__helpers_msg__["a" /* default */].setError('Email Address already Exist');
                 }
-                _this.isProcessing = false;
             });
         },
         login: function login() {
@@ -57889,15 +57889,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this2.$router.push('/shop');
                     __WEBPACK_IMPORTED_MODULE_2__store_auth__["a" /* default */].set(res.data.api_token, res.data.name, res.data.role);
                     __WEBPACK_IMPORTED_MODULE_0__helpers_msg__["a" /* default */].setSuccess('Login Successful!...Welcome to Cytonn Mall, your shopping Hub!!');
-                    _this2.isProcessing = false;
                 }
-                _this2.isProcessing = false;
             }).catch(function (err) {
                 if (err.response.status === 422) {
                     _this2.error = err.response.data;
                     __WEBPACK_IMPORTED_MODULE_0__helpers_msg__["a" /* default */].setError('Wrong Login Details');
                 }
-                _this2.isProcessing = false;
             });
         }
     }
@@ -58184,23 +58181,13 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "button float-right",
-                  attrs: { type: "submit", disabled: _vm.isProcessing }
-                },
-                [
-                  _c("i", { staticClass: "fi-pencil" }),
-                  _vm._v(" Register\n                ")
-                ]
-              ),
+              _vm._m(4),
               _vm._v(" "),
-              _vm._m(4)
+              _vm._m(5)
             ]
           ),
           _vm._v(" "),
-          _vm._m(5)
+          _vm._m(6)
         ]
       )
     ])
@@ -58254,6 +58241,19 @@ var staticRenderFns = [
       _c("i", { staticClass: "fi-plus" }),
       _vm._v(" Register Now")
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "button float-right", attrs: { type: "submit" } },
+      [
+        _c("i", { staticClass: "fi-pencil" }),
+        _vm._v(" Register\n                ")
+      ]
+    )
   },
   function() {
     var _vm = this

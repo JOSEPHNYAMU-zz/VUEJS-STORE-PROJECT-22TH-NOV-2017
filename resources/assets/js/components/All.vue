@@ -46,6 +46,9 @@
     import State from '../Cart/cart'
 
     export default {
+        mounted() {
+            $(this.$el).foundation();
+        },
         created() {
             this.$http.get('api/items')
                 .then(response => {

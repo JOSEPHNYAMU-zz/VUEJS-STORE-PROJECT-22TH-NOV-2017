@@ -60,7 +60,7 @@
                         <input type="password" class="form-control" required id="passwords" v-model="form.password"
                                placeholder="Password">
                     </div>
-                    <button type="submit" :disabled="isProcessing" class="button float-right"><i class="fi-pencil"></i>&nbsp;Register
+                    <button type="submit" class="button float-right"><i class="fi-pencil"></i>&nbsp;Register
                     </button>
                     <a class="float-right success" style="margin-right: 10px;" data-open="account"><i class="fa fa-lock"
                                                                                                       aria-hidden="true"></i>&nbsp;Login Here</a>
@@ -89,8 +89,7 @@
                 },
                 msg: Msg.state,
                 auth: Auth.state,
-                error: {},
-                isProcessing: false
+                error: {}
             }
         },
         mounted() {
@@ -106,16 +105,12 @@
                             this.form = '';
                             Msg.setSuccess('User Successfully added!')
                         }
-                        this.isProcessing = false
-
-
                     })
                     .catch((err) => {
                         if (err.response.status === 422) {
                             this.error = err.response.data;
                             Msg.setError('Email Address already Exist')
                         }
-                        this.isProcessing = false
                     })
             },
             login() {
@@ -127,18 +122,13 @@
                             this.$router.push('/shop');
                             Auth.set(res.data.api_token, res.data.name, res.data.role);
                             Msg.setSuccess('Login Successful!...Welcome to Cytonn Mall, your shopping Hub!!')
-                            this.isProcessing = false
                         }
-                        this.isProcessing = false
-
-
                     })
                     .catch((err) => {
                         if (err.response.status === 422) {
                             this.error = err.response.data;
                             Msg.setError('Wrong Login Details')
                         }
-                        this.isProcessing = false
                     })
             }
         }
