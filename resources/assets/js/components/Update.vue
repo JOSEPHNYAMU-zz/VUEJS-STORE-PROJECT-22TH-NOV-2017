@@ -30,6 +30,7 @@
             </div>
             <div class="small-3 columns"></div>
         </div>
+        <footer-view></footer-view>
     </div>
 </template>
 <script>
@@ -38,6 +39,7 @@
     import Msg from '../helpers/msg'
     import {post} from '../helpers/api'
     import Items from './Items.vue'
+    import Footer from './Footer.vue'
     export default {
         data(){
             return {
@@ -48,7 +50,8 @@
         },
         components:{
             MainMenu,
-            'main-menu': MainMenu
+            'main-menu': MainMenu,
+            'footer-view': Footer
         },
         created() {
             this.getItem();
