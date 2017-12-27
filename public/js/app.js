@@ -58385,7 +58385,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.directive('data-dropdown-menu', {
                 if (res.data.signOut) {
                     __WEBPACK_IMPORTED_MODULE_0__store_auth__["a" /* default */].remove();
                     _this.$router.push('/');
-                    location.reload();
+                    //                          location.reload()
                 }
             });
         }
