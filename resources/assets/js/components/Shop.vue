@@ -23,19 +23,6 @@
             <div class="small-1 column">
             </div>
         </div>
-        <div class="reveal" id="checks" data-reveal>
-            <h5 class="greens"><i class="fi-check"></i>&nbsp;Checkout Successful</h5>
-            <hr/>
-            Hello {{auth.name}},<br/>
-            Thank You for shopping with us!!...You have successfully purchased the goods at Cytonn Mall.
-            Your Order will be processed in few minutes.<br/></br>
-            <strong>Cytonn Mall<br/>
-                Fedha Plaza<br/>
-                0722563684</strong>
-            <button class="close-button" data-close aria-label="Close reveal" type="button">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
     </div>
 </template>
 <script>

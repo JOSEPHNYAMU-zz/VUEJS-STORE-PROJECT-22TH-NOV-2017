@@ -56121,6 +56121,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -56251,7 +56264,28 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           _c("br")
-        ])
+        ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "reveal", attrs: { id: "checks", "data-reveal": "" } },
+      [
+        _vm._m(6),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v("\n        Hello " + _vm._s(_vm.auth.name) + ","),
+        _c("br"),
+        _vm._v(
+          "\n        Thank You for shopping with us!!...You have successfully purchased the goods at Cytonn Mall.\n        Your Order will be processed in few minutes."
+        ),
+        _c("br"),
+        _c("br"),
+        _vm._v(" "),
+        _vm._m(7),
+        _vm._v(" "),
+        _vm._m(8)
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -56320,6 +56354,44 @@ var staticRenderFns = [
         attrs: { "data-open": "register" }
       },
       [_c("i", { staticClass: "fi-pencil" }), _vm._v(" Register")]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", { staticClass: "greens" }, [
+      _c("i", { staticClass: "fi-check" }),
+      _vm._v(" Checkout Successful")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _vm._v("Cytonn Mall"),
+      _c("br"),
+      _vm._v("\n            Fedha Plaza"),
+      _c("br"),
+      _vm._v("\n            0722563684")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close-button",
+        attrs: {
+          "data-close": "",
+          "aria-label": "Close reveal",
+          type: "button"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
     )
   }
 ]
@@ -56420,7 +56492,10 @@ var render = function() {
                   "background-color": "rgba(0,0,0,0.5)",
                   padding: "20px"
                 },
-                attrs: { "data-dropdown-menu": "" }
+                attrs: {
+                  "data-options": "disableHover:true;clickOpen:true",
+                  "data-dropdown-menu": ""
+                }
               },
               [
                 _vm._m(3),
@@ -58246,19 +58321,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -58777,72 +58839,12 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "small-1 column" })
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "reveal", attrs: { id: "checks", "data-reveal": "" } },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v("\n        Hello " + _vm._s(_vm.auth.name) + ","),
-          _c("br"),
-          _vm._v(
-            "\n        Thank You for shopping with us!!...You have successfully purchased the goods at Cytonn Mall.\n        Your Order will be processed in few minutes."
-          ),
-          _c("br"),
-          _c("br"),
-          _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
-          _vm._m(2)
-        ]
-      )
+      ])
     ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h5", { staticClass: "greens" }, [
-      _c("i", { staticClass: "fi-check" }),
-      _vm._v(" Checkout Successful")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("strong", [
-      _vm._v("Cytonn Mall"),
-      _c("br"),
-      _vm._v("\n            Fedha Plaza"),
-      _c("br"),
-      _vm._v("\n            0722563684")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "close-button",
-        attrs: {
-          "data-close": "",
-          "aria-label": "Close reveal",
-          type: "button"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
