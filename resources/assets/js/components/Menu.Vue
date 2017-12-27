@@ -57,8 +57,6 @@
             $(el).foundation.destroy();
         }
     });
-
-
     export default {
         components:{
             'item-cart': Cart

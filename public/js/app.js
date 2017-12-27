@@ -54454,7 +54454,6 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.directive('data-dropdown-menu', {
         $(el).foundation.destroy();
     }
 });
-
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
         'item-cart': __WEBPACK_IMPORTED_MODULE_3__Cart_vue___default.a

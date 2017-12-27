@@ -9163,11 +9163,6 @@ ul {
   color: green;
 }
 
-.reveal {
-  position: absolute !important;
-  top: 0 !important;
-}
-
 .modal-mask {
   position: fixed;
   z-index: 9998;
