@@ -8,7 +8,7 @@
         <div class="" v-else>
             <h5 class="greens"><i class="fi-shopping-cart"></i>&nbsp;Items in Cart</h5>
             <hr/>
-            <table class="striped">
+            <table class="striped" style="text-align: left;">
                 <tr>
                     <th>
                         <small>ITEM</small>
@@ -50,27 +50,6 @@
             <div class="green" style="width:auto;">
                 <span><strong>Total</strong></span>&nbsp;&nbsp;<span>Ksh. {{total | formatMoney}}</span></div>
             <br/>
-            <div v-if="auth.role != 'User'" >
-                <router-link class="menus" to="/account" style="margin:0;padding:0;">
-            <button class="button tiny primary float-right" data-open="account"><i class="fi-unlock"></i>&nbsp;Login to Checkout</button>
-            <button style="margin-right: 7px;" data-open="register" class="button tiny alert float-right"><i class="fi-pencil"></i>&nbsp;Register to Checkout</button>
-                </router-link>
-            </div>
-            <button v-if="auth.role == 'User'" data-open="checks" class="button tiny success float-right"><i class="fi-paypal"></i>&nbsp;Checkout</button>
-            <br/><br/>
-        </div>
-        <div class="reveal" id="checks" data-reveal>
-            <h5 class="greens"><i class="fi-check"></i>&nbsp;Checkout Successful</h5>
-            <hr/>
-            Hello,<br/>
-            Thank You for shopping with us!!...You have successfully purchased the goods at Cytonn Mall.
-            Your Order will be processed in few minutes.<br/></br>
-            <strong>Cytonn Mall<br/>
-                Fedha Plaza<br/>
-                0722563684</strong>
-            <button class="close-button" data-close aria-label="Close reveal" type="button">
-                <span aria-hidden="true">&times;</span>
-            </button>
         </div>
     </div>
 </template>

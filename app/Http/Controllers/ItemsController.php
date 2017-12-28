@@ -11,6 +11,7 @@ class ItemsController extends Controller
 {
     public function index(){
         return Item::orderBy('id', 'desc')->get();
+//        return Item::inRandomOrder()->get();
     }
 
     public function show($id)

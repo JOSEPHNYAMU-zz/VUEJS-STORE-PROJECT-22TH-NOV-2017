@@ -45,6 +45,9 @@
     import Items from './Items.vue'
     import Footer from './Footer.vue'
     export default {
+        mounted() {
+            $(this.$el).foundation();
+        },
         data(){
             return {
                 auth: Auth.state,

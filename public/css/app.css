@@ -9246,3 +9246,7 @@ ul {
   transform: scale(1.01);
 }
 
+.pady {
+  padding-right: 50px !important;
+}
+

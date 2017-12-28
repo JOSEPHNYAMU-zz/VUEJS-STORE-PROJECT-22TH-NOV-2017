@@ -1,7 +1,7 @@
 <template>
     <div class="cell">
         <div class="card">
-            <img class="imgs imgx" :src="'https://www.cytonnmall.ml/images/' + item.image">
+            <img class="imgs imgx" :src="'http://mall.net/images/' + item.image">
             <div class="card-section">
                 <div class="grid-x">
                     <div class="small-6 columns float-left">
@@ -18,20 +18,26 @@
                     <div class="small-12 columns">
                         <br/>
                         <button style="margin-left: 5px;" class="button primary float-right tiny"
-                                @click="addToCart" v-if="qtyInCart == 0"><i class="fi-shopping-cart"></i>&nbsp;Buy
+                                @click="addToCart"
+                                v-if="(qtyInCart == 0 && logged == false) || (qtyInCart == 0 && auth.role == 'User')"><i
+                                class="fi-shopping-cart"></i>&nbsp;Buy
                         </button>
+
                         <span v-else>
-                            <button class="button tiny alert" @click="dec"><i class="fi-minus"></i></button>
+                            <span v-if="auth.role != 'Admin'">
+                                <button class="button tiny alert" @click="dec"><i class="fi-minus"></i></button>
                             <button class="button tiny primary" @click="inc"><i class="fi-plus"></i></button>
+                            </span>
                                             </span>
-                        <button style="margin-left: 5px;" class="button success float-right tiny"><i
+                        <button v-if="auth.role == 'User' || logged == false" style="margin-left: 5px;"
+                                class="button success float-right tiny"><i
                                 class="fi-eye"></i>&nbsp;View
                         </button>
-                        <button style="margin-right: 5px;" v-if="auth.role === 'Admin'"
-                                class="button alert float-left tiny"
+                        <button v-if="auth.role === 'Admin'"
+                                class="button alert float-right tiny"
                                 @click="$emit('remove-item')"><i class="fi-trash"></i>&nbsp;Del
                         </button>
-                        <router-link class="button primary float-left tiny"
+                        <router-link style="margin-right: 5px;" class="button primary float-right tiny"
                                      v-if="auth.role === 'Admin'" :to="'/item/' + item.id + '/edit'"><i
                                 class="fi-pencil"></i>&nbsp;Edit
                         </router-link>
@@ -49,6 +55,7 @@
     import Vue from 'vue'
     import _ from 'lodash'
     import State from '../Cart/cart'
+
     export default {
         props: ['item'],
         data() {
@@ -58,6 +65,12 @@
             }
         },
         computed: {
+            logged() {
+                if (this.auth.api_token && this.auth.role) {
+                    return true
+                }
+                return false
+            },
             qtyInCart() {
                 var found = _.find(this.shared.cart, ['id', this.item.id]);
                 if (typeof found == 'object') {

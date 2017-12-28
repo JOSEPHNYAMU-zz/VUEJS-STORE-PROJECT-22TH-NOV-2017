@@ -1,35 +1,33 @@
 <template>
     <div id="row">
         <div class="top-bar menu-mobile" id="main-menu"
-             style="background-color:transparent;top:0%;position:fixed;width:100%;">
+             style="background-color:transparent;top:0%;position:absolute;width:100%;">
             <ul style="background-color: transparent;" type="none" class="float-left">
-                <li style="background-color: transparent;" type="none" class="menu-tex"><img class="logo"
-                                                                                             style="width:107px;"
-                                                                                             src="../images/cytonn.png"/>
+                <li style="background-color: transparent;" type="none" class="menu-tex"><img class="logo" style="width:107px;" src="../images/logox.png"/>
                 </li>
             </ul>
-
             <div class="top-bar-left" style="background-color:rgba(0,0,0,0.5);margin-left: 16px;">
                 <ul style="background-color:rgba(0,0,0,0.5);padding:10px;" id="drop-down" class="dropdown menu"
                     data-dropdown-menu>
                     <li style="font-family: 'Proxima Nova Regular', sans-serif;">
-                        <a href="#" style="color:#ffffff;"><i class="fi-home"></i>&nbsp;HOME</a>
-                    </li>
-                    <li style="font-family: 'Proxima Nova Regular', sans-serif;">
-                    <li>
-                        <router-link class="menus" to="/contact"><i class="fi-telephone"></i>&nbsp;CONTACT US
+                        <router-link style="color:#ffffff;" class="menus" to="/">
+                            <i class="fi-home"></i>&nbsp;HOME
                         </router-link>
                     </li>
                     <li>
-                        <a href="#" style="color:#ffffff;"><i class="fi-book"></i>&nbsp;ABOUT US</a>
+                    <a href="#" style="color:#ffffff;" data-open="maps"><i class="fi-telephone"></i>&nbsp;CONTACT US</a>
+                    </li>
+                    <li>
+                        <a href="#" style="color:#ffffff;" data-open="about"><i class="fi-book"></i>&nbsp;ABOUT US</a>
                     </li>
                 </ul>
             </div>
             <div class="top-bar-right" style="background-color:rgba(0,0,0,0.5);">
-                <ul style="background-color:rgba(0,0,0,0.5);padding:20px;" class="dropdown menu" data-options="disableHover:true;clickOpen:true" data-dropdown-menu>
+                <ul style="background-color:rgba(0,0,0,0.5);padding:20px;" class="dropdown menu"
+                    data-options="disableHover:true;clickOpen:true" data-dropdown-menu>
                     <li style="font-family: 'Proxima Nova Regular', sans-serif;">
-                        <a href="#" style="color:#ffffff;" data-open="account"><i
-                                class="fi-torsos"></i>&nbsp;ACCOUNT</a>
+                        <router-link style="color:#ffffff;" class="menus" to="/account"><i class="fi-torsos"></i>&nbsp;ACCOUNT
+                        </router-link>
                     </li>
                     <li><a href="#" style="color:#ffffff;">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</a></li>
                     <li>
@@ -45,7 +43,6 @@
             </div>
         </div>
     </div>
-
 </template>
 <script>
     import Auth from '../store/auth'
@@ -55,13 +52,21 @@
     import Cart from './Cart.vue'
     import _ from 'lodash'
     import State from '../Cart/cart'
+    import Login from './Auth/Login.vue'
+    import Register from './Auth/Register.vue'
 
     export default {
+        data() {
+            return {
+                currentView: 'auth-view'
+            }
+        },
         mounted() {
             $(this.$el).foundation();
         },
         components: {
-            'item-cart': Cart
+            'item-cart': Cart,
+            'auth-view': Login
         }
     }
 </script>

@@ -25,7 +25,25 @@
                 <foot-data></foot-data>
             </div>
         </div>
-        <auth-view></auth-view>
+
+
+
+
+
+
+
+
+
+
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+        <!--<keep-alive>-->
+            <!--<component :is="currentView"></component>-->
+            <!--<register-modal></register-modal>-->
+            <!--<login-modal></login-modal>-->
+        <!--</keep-alive>-->
     </div>
 </template>
 
@@ -36,7 +54,8 @@
     import Banner from './Banner.vue'
     import Item from './Item.vue'
     import Action from './Action.vue'
-    import Forms from './Auth/Forms.vue'
+    import Register from './Auth/Register.vue'
+    import Login from './Auth/Login.vue'
     import Auth from '../store/auth'
     import {post} from '../helpers/api'
     import {get, byMethod} from '../helpers/api'
@@ -48,6 +67,14 @@
     export default {
         mounted() {
             $(this.$el).foundation();
+        },
+        computed: {
+            logged() {
+                if (this.auth.api_token && this.auth.role) {
+                    return true
+                }
+                return false
+            }
         },
         created() {
             this.$http.get('api/items')
@@ -73,12 +100,13 @@
         },
         components: {
             'main-menu': Menu,
+            'login-modal': Login,
             'banner-texts': BannerText,
             'foot-data': Footer,
             'banner-image': Banner,
             'store-items': Item,
             'action-section': Action,
-            'auth-view': Forms
+            'register-modal': Register
         },
         name: 'app'
     }

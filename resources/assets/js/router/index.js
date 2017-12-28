@@ -4,6 +4,8 @@ import All from '../components/All.vue'
 import Shop from '../components/Shop.vue'
 import Add from '../components/Add.vue'
 import Update from '../components/Update.vue'
+import Contact from '../components/Contact.vue'
+import Account from '../components/Account.vue'
 
 Vue.filter('formatMoney', (value) => {
     return Number(value)
@@ -16,6 +18,8 @@ const router = new VueRouter({
         {path: '/', component: All},
         {path: '/shop', component: Shop},
         {path: '/add', component: Add},
+        {path: '/account', component: Account},
+        {path: '/contact', component: Contact},
         {path: '/item/:item/edit', component: Update}
     ]
 });

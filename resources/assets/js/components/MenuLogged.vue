@@ -3,9 +3,7 @@
         <div class="top-bar" id="main-menu"
              style="background-color:transparent;top:0%;width:100%;">
             <ul style="background-color: transparent;" type="none" class="float-left">
-                <li style="background-color: transparent;" type="none" class="menu-tex"><img class="logo"
-                                                                                             style="width:107px;"
-                                                                                             src="../images/logox.png"/>
+                <li style="background-color: transparent;" type="none" class="menu-tex"><img class="logo" style="width:107px;" src="../images/logox.png"/>
                 </li>
             </ul>
             <div class="top-bar-left" style="background-color:rgba(0,0,0,0.5);margin-left: 16px;">
@@ -13,11 +11,10 @@
                     data-dropdown-menu>
                     <li style="font-family: 'Proxima Nova Regular', sans-serif;">
                     <li v-if="auth.role === 'User'">
-                        <router-link class="menus" to="/contact"><i class="fi-telephone"></i>&nbsp;CONTACT US
-                        </router-link>
+                        <a href="#" style="color:#ffffff;" data-open="maps"><i class="fi-telephone"></i>&nbsp;CONTACT US</a>
                     </li>
                     <li v-if="auth.role === 'User'">
-                        <a href="#" style="color:#ffffff;"><i class="fi-book"></i>&nbsp;ABOUT US</a>
+                        <a href="#" style="color:#ffffff;" data-open="about"><i class="fi-book"></i>&nbsp;ABOUT US</a>
                     </li>
                     <li v-if="auth.role === 'Admin'">
                         <router-link class="menus" to="/"><i class="fi-home"></i>&nbsp;ITEMS HOME

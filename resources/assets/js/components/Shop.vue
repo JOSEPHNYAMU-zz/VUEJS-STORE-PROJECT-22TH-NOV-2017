@@ -43,6 +43,14 @@
     import Footer from './Footer.vue'
 
     export default {
+        computed: {
+            logged() {
+                if (this.auth.api_token && this.auth.role) {
+                    return true
+                }
+                return false
+            }
+        },
         created() {
             this.$http.get('api/items')
                 .then(response => {
@@ -67,6 +75,9 @@
                 error: {},
                 items: []
             }
+        },
+        mounted() {
+            $(this.$el).foundation();
         },
         methods:{
             removeItem(item) {
