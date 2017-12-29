@@ -1,7 +1,7 @@
 <template>
     <div class="cell">
         <div class="card">
-            <img class="imgs imgx" :src="'https://cytonnmall.ml/images/' + item.image">
+            <img class="imgs imgx" :src="'https://www.cytonnmall.ml/images/' + item.image">
             <div class="card-section">
                 <div class="grid-x">
                     <div class="small-6 columns float-left">
