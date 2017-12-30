@@ -13,7 +13,6 @@ export function post(url, data) {
         data: data,
         headers: {
             'Authorization': `Bearer ${Auth.state.api_token}`,
-            'Access-Control-Allow-Origin': '*'
         }
     })
 }
@@ -22,11 +21,7 @@ export function get(url, params) {
     return axios({
         method: 'GET',
         url: url,
-        params: params,
-        headers: {
-            'Authorization': `Bearer ${Auth.state.api_token}`,
-            'Access-Control-Allow-Origin': '*'
-        }
+        params: params
     })
 }
 
@@ -34,10 +29,6 @@ export function byMethod(method, url, data) {
     return axios({
         method: method,
         url: url,
-        data: data,
-        headers: {
-            'Authorization': `Bearer ${Auth.state.api_token}`,
-            'Access-Control-Allow-Origin': '*'
-        }
+        data: data
     })
 }
