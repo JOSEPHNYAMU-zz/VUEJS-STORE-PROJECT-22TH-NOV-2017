@@ -3,10 +3,10 @@
         <h6><i class="fi-unlock"></i>&nbsp;LOGIN</h6>
         <form @submit.prevent="login" method="post">
             <div v-if="msg.success" class="green">
-                {{msg.success}}
+                <i class="fi-check"></i>&nbsp;&nbsp;{{msg.success}}
             </div>
             <div v-if="msg.error" class="red">
-                {{msg.error}}
+                <i class="fi-info"></i>&nbsp;&nbsp;{{msg.error}}
             </div>
             <div class="form-group">
                 <label for="emails">Email Address</label>
@@ -55,13 +55,13 @@
                         if (res.data.authenticated) {
                             Auth.set(res.data.api_token, res.data.name, res.data.role);
                             this.$router.push('/shop');
-                            Msg.setSuccess('Login Successful!...Welcome to Cytonn Mall, your shopping Hub!!')
+                            Msg.setSuccess('Welcome to Cytonn Mall, your shopping Hub!!')
                         }
                     })
                     .catch((err) => {
                         if (err.response.status === 422) {
                             this.error = err.response.data;
-                            Msg.setError('Wrong Login Details')
+                            Msg.setError('Wrong Login Details!...Please try again!!')
                         }
                     })
             }

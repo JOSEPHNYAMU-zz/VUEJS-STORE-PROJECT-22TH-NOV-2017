@@ -7,10 +7,10 @@
 
                 <form @submit.prevent="update" method="post">
                     <div v-if="msg.success" class="green">
-                        {{msg.success}}
+                        <i class="fi-check"></i>&nbsp;&nbsp;{{msg.success}}
                     </div>
                     <div v-if="msg.error" class="red">
-                        {{msg.error}}
+                        <i class="fi-info"></i>&nbsp;&nbsp;{{msg.error}}
                     </div>
 
                     <div class="form-group">

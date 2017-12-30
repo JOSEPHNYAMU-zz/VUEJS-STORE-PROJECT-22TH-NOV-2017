@@ -1,18 +1,24 @@
 <template>
     <div>
         <main-menu></main-menu>
-
         <div class="grid-x">
             <div class="small-1 column">
             </div>
             <div class="small-10 column">
                 <div class="small-12 columns"
                      style="text-align:center;color:#0A0A0A;">
-                    <div v-if="msg.success" class="green">
-                        {{msg.success}}
-                    </div>
-                    <div v-if="msg.error" class="red">
-                        {{msg.error}}
+                    <div class="grid-x">
+                        <div class="small-4 columns">
+                            <div v-if="msg.success" class="green">
+                                <i class="fi-check"></i>&nbsp;&nbsp;{{msg.success}}
+                            </div>
+                            <div v-if="msg.error" class="red">
+                                <i class="fi-info"></i>&nbsp;{{msg.error}}
+                            </div>
+                        </div>
+                        <div class="small-8 columns">
+                         <!-- Empty Div -->
+                        </div>
                     </div>
                     <div class="grid-x padded paddy">
                         <div class="medium-6 large-12 cell" style="color:#ffffff;">
@@ -85,7 +91,7 @@
                     .then(response => {
                         let index = this.items.indexOf(item);
                         this.items.splice(index, 1);
-                        Msg.setSuccess('The Item Has been Removed!')
+                        Msg.setSuccess(item.title + ' Has been Removed')
                     })
             }
         }

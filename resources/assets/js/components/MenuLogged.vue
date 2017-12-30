@@ -3,7 +3,7 @@
         <div class="top-bar" id="main-menu"
              style="background-color:transparent;top:0%;width:100%;">
             <ul style="background-color: transparent;" type="none" class="float-left">
-                <li style="background-color: transparent;" type="none" class="menu-tex"><img class="logo" style="width:107px;" src="../images/logox.png"/>
+                <li style="background-color: transparent;" type="none" class="menu-tex"><img class="logo" style="width:96px;" src="../images/logox.png"/>
                 </li>
             </ul>
             <div class="top-bar-left" style="background-color:rgba(0,0,0,0.5);margin-left: 16px;">

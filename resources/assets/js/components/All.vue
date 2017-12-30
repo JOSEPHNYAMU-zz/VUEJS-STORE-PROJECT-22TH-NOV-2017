@@ -23,27 +23,14 @@
                 </div>
                 <action-section></action-section>
                 <foot-data></foot-data>
+                <div v-if="msg.success" class="green">
+                    <i class="fi-check"></i>&nbsp;&nbsp;{{msg.success}}
+                </div>
+                <div v-if="msg.error" class="red">
+                    <i class="fi-info"></i>&nbsp;&nbsp;{{msg.error}}
+                </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-        <!---->
-        <!---->
-        <!---->
-        <!---->
-        <!--<keep-alive>-->
-            <!--<component :is="currentView"></component>-->
-            <!--<register-modal></register-modal>-->
-            <!--<login-modal></login-modal>-->
-        <!--</keep-alive>-->
     </div>
 </template>
 

@@ -47,7 +47,7 @@
                 </tr>
             </table>
             <br/>
-            <div class="green" style="width:auto;">
+            <div class="greenx" style="width:auto;">
                 <span><strong>Total</strong></span>&nbsp;&nbsp;<span>Ksh. {{total | formatMoney}}</span></div>
             <br/>
             <div v-if="auth.role != 'User'" >

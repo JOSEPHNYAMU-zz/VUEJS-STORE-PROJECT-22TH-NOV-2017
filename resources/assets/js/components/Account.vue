@@ -20,6 +20,7 @@
            </div>
            <div class="small-1 columns"></div>
        </div>
+        <br/><br/><br/>
         <footer-view></footer-view>
     </div>
 </template>

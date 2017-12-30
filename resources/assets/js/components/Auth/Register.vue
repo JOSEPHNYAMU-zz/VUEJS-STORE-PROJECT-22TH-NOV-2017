@@ -3,10 +3,10 @@
         <h6><i class="fi-plus"></i>&nbsp;CREATE ACCOUNT</h6>
                 <form method="post" @submit.prevent="register">
                     <div v-if="msg.success" class="green">
-                        {{msg.success}}
+                        <i class="fi-check"></i>&nbsp;&nbsp;{{msg.success}}
                     </div>
                     <div v-if="msg.error" class="red">
-                        {{msg.error}}
+                        <i class="fi-info"></i>&nbsp;&nbsp;{{msg.error}}
                     </div>
                     <div class="form-group">
                         <label for="name">Fullname</label>

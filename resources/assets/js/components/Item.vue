@@ -82,10 +82,11 @@
         },
         methods: {
             addToCart() {
-                State.add(this.item)
+                State.add(this.item);
+                Msg.setSuccess(this.item.title + ' Successfully Added')
             },
             dec() {
-                State.dec(this.item)
+                State.dec(this.item);
             },
             inc() {
                 State.inc(this.item)

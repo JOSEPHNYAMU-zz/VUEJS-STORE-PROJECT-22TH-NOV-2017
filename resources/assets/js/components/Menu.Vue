@@ -3,7 +3,8 @@
         <div class="top-bar menu-mobile" id="main-menu"
              style="background-color:transparent;top:0%;position:absolute;width:100%;">
             <ul style="background-color: transparent;" type="none" class="float-left">
-                <li style="background-color: transparent;" type="none" class="menu-tex"><img class="logo" style="width:107px;" src="../images/logox.png"/>
+                <li style="background-color: transparent;" type="none" class="menu-tex">
+                    <img class="logo" style="width:96px;" src="../images/logox.png"/>
                 </li>
             </ul>
             <div class="top-bar-left" style="background-color:rgba(0,0,0,0.5);margin-left: 16px;">
@@ -15,7 +16,7 @@
                         </router-link>
                     </li>
                     <li>
-                    <a href="#" style="color:#ffffff;" data-open="maps"><i class="fi-telephone"></i>&nbsp;CONTACT US</a>
+                        <a href="#" style="color:#ffffff;" data-open="maps"><i class="fi-telephone"></i>&nbsp;CONTACT US</a>
                     </li>
                     <li>
                         <a href="#" style="color:#ffffff;" data-open="about"><i class="fi-book"></i>&nbsp;ABOUT US</a>
@@ -25,13 +26,24 @@
             <div class="top-bar-right" style="background-color:rgba(0,0,0,0.5);">
                 <ul style="background-color:rgba(0,0,0,0.5);padding:20px;" class="dropdown menu"
                     data-options="disableHover:true;clickOpen:true" data-dropdown-menu>
+                    <li>
+                        <a href="#" style="color:#ffffff;"><i class="fi-magnifying-glass"></i>&nbsp;</a>
+                        <ul class="menu vertical" style="width:400px;border-radius:3px;">
+                            <form action="#">
+                                <div class="form-group">
+                                    <input type="text" v-model="keywords" style="max-width:100% !important;"
+                                           class="form-control" placeholder="Search..."/>
+                                </div>
+                            </form>
+                        </ul>
+                    </li>
                     <li style="font-family: 'Proxima Nova Regular', sans-serif;">
                         <router-link style="color:#ffffff;" class="menus" to="/account"><i class="fi-torsos"></i>&nbsp;ACCOUNT
                         </router-link>
                     </li>
                     <li><a href="#" style="color:#ffffff;">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</a></li>
                     <li>
-                        <a href="#" style="color:#ffffff;"><i class="fi-shopping-cart"></i>&nbsp;</a>
+                        <a href="#" style="color:#ffffff;"><i class="fi-shopping-cart"></i>&nbsp;<!-- <sup class="price" >{{counter}}</sup> --></a>
                         <ul class="menu vertical" style="width:500px;">
                             <div class="cart">
                                 <item-cart></item-cart>
@@ -52,21 +64,39 @@
     import Cart from './Cart.vue'
     import _ from 'lodash'
     import State from '../Cart/cart'
-    import Login from './Auth/Login.vue'
-    import Register from './Auth/Register.vue'
+    import axios from 'axios'
 
     export default {
         data() {
             return {
-                currentView: 'auth-view'
+                keywords: '',
+                results: []
             }
         },
         mounted() {
             $(this.$el).foundation();
         },
         components: {
-            'item-cart': Cart,
-            'auth-view': Login
+            'item-cart': Cart
+        },
+        methods: {
+            searchAfterDebounce: _.debounce(
+                function () {
+                    this.search()
+                }, 500
+            ),
+            search() {
+                if (keywords.length > 1) {
+                    axios.get('/api/items').then(response => {
+                        this.results = response.data
+                    })
+                }
+            }
+        },
+        watch: {
+            keywords: function (val) {
+                this.searchAfterDebounce()
+            }
         }
     }
 </script>

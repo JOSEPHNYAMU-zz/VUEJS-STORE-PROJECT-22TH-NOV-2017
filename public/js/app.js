@@ -22200,7 +22200,7 @@ function getKeyCodes(kcs) {
         this.state.success = message;
         setTimeout(function () {
             _this.removeSuccess();
-        }, 4000);
+        }, 7000);
     },
     setError: function setError(message) {
         var _this2 = this;
@@ -22208,7 +22208,7 @@ function getKeyCodes(kcs) {
         this.state.error = message;
         setTimeout(function () {
             _this2.removeError();
-        }, 4000);
+        }, 7000);
     },
     removeSuccess: function removeSuccess() {
         this.state.success = null;
@@ -39719,6 +39719,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     add: function add(item) {
         var found = _.find(this.data.cart, ['id', item.id]);
         if ((typeof found === 'undefined' ? 'undefined' : _typeof(found)) != 'object') {
+
+            // if(this.data.cart.length == 0){
+            //     initials == 1
+            // }else{
+            //     initials = initials++
+            // }
             this.data.cart.push({
                 id: item.id,
                 title: item.title,
@@ -54708,19 +54714,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -54803,10 +54796,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Cart_cart__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Auth_Login_vue__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Auth_Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__Auth_Login_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Auth_Register_vue__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Auth_Register_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__Auth_Register_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_axios__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_axios__);
 //
 //
 //
@@ -54853,7 +54844,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -54867,7 +54869,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            currentView: 'auth-view'
+            keywords: '',
+            results: []
         };
     },
     mounted: function mounted() {
@@ -54875,8 +54878,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     components: {
-        'item-cart': __WEBPACK_IMPORTED_MODULE_3__Cart_vue___default.a,
-        'auth-view': __WEBPACK_IMPORTED_MODULE_6__Auth_Login_vue___default.a
+        'item-cart': __WEBPACK_IMPORTED_MODULE_3__Cart_vue___default.a
+    },
+    methods: {
+        searchAfterDebounce: __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.debounce(function () {
+            this.search();
+        }, 500),
+        search: function search() {
+            var _this = this;
+
+            if (keywords.length > 1) {
+                __WEBPACK_IMPORTED_MODULE_6_axios___default.a.get('/api/items').then(function (response) {
+                    _this.results = response.data;
+                });
+            }
+        }
+    },
+    watch: {
+        keywords: function keywords(val) {
+            this.searchAfterDebounce();
+        }
     }
 });
 
@@ -56666,7 +56687,7 @@ var render = function() {
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _c("div", { staticClass: "green", staticStyle: { width: "auto" } }, [
+          _c("div", { staticClass: "greenx", staticStyle: { width: "auto" } }, [
             _vm._m(3),
             _vm._v("  "),
             _c("span", [
@@ -56903,12 +56924,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (res.data.authenticated) {
                     __WEBPACK_IMPORTED_MODULE_2__store_auth__["a" /* default */].set(res.data.api_token, res.data.name, res.data.role);
                     _this.$router.push('/shop');
-                    __WEBPACK_IMPORTED_MODULE_0__helpers_msg__["a" /* default */].setSuccess('Login Successful!...Welcome to Cytonn Mall, your shopping Hub!!');
+                    __WEBPACK_IMPORTED_MODULE_0__helpers_msg__["a" /* default */].setSuccess('Welcome to Cytonn Mall, your shopping Hub!!');
                 }
             }).catch(function (err) {
                 if (err.response.status === 422) {
                     _this.error = err.response.data;
-                    __WEBPACK_IMPORTED_MODULE_0__helpers_msg__["a" /* default */].setError('Wrong Login Details');
+                    __WEBPACK_IMPORTED_MODULE_0__helpers_msg__["a" /* default */].setError('Wrong Login Details!...Please try again!!');
                 }
             });
         }
@@ -56941,13 +56962,15 @@ var render = function() {
       [
         _vm.msg.success
           ? _c("div", { staticClass: "green" }, [
-              _vm._v("\n            " + _vm._s(_vm.msg.success) + "\n        ")
+              _c("i", { staticClass: "fi-check" }),
+              _vm._v("  " + _vm._s(_vm.msg.success) + "\n        ")
             ])
           : _vm._e(),
         _vm._v(" "),
         _vm.msg.error
           ? _c("div", { staticClass: "red" }, [
-              _vm._v("\n            " + _vm._s(_vm.msg.error) + "\n        ")
+              _c("i", { staticClass: "fi-info" }),
+              _vm._v("  " + _vm._s(_vm.msg.error) + "\n        ")
             ])
           : _vm._e(),
         _vm._v(" "),
@@ -57161,21 +57184,15 @@ var render = function() {
       [
         _vm.msg.success
           ? _c("div", { staticClass: "green" }, [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(_vm.msg.success) +
-                  "\n                "
-              )
+              _c("i", { staticClass: "fi-check" }),
+              _vm._v("  " + _vm._s(_vm.msg.success) + "\n                ")
             ])
           : _vm._e(),
         _vm._v(" "),
         _vm.msg.error
           ? _c("div", { staticClass: "red" }, [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(_vm.msg.error) +
-                  "\n                "
-              )
+              _c("i", { staticClass: "fi-info" }),
+              _vm._v("  " + _vm._s(_vm.msg.error) + "\n                ")
             ])
           : _vm._e(),
         _vm._v(" "),
@@ -57408,6 +57425,46 @@ var render = function() {
                 }
               },
               [
+                _c("li", [
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _c(
+                    "ul",
+                    {
+                      staticClass: "menu vertical",
+                      staticStyle: { width: "400px", "border-radius": "3px" }
+                    },
+                    [
+                      _c("form", { attrs: { action: "#" } }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.keywords,
+                                expression: "keywords"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            staticStyle: { "max-width": "100% !important" },
+                            attrs: { type: "text", placeholder: "Search..." },
+                            domProps: { value: _vm.keywords },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.keywords = $event.target.value
+                              }
+                            }
+                          })
+                        ])
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
                 _c(
                   "li",
                   {
@@ -57432,10 +57489,10 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _vm._m(3),
+                _vm._m(4),
                 _vm._v(" "),
                 _c("li", [
-                  _vm._m(4),
+                  _vm._m(5),
                   _vm._v(" "),
                   _c(
                     "ul",
@@ -57477,7 +57534,7 @@ var staticRenderFns = [
           [
             _c("img", {
               staticClass: "logo",
-              staticStyle: { width: "107px" },
+              staticStyle: { width: "96px" },
               attrs: { src: __webpack_require__(43) }
             })
           ]
@@ -57514,6 +57571,16 @@ var staticRenderFns = [
         [_c("i", { staticClass: "fi-book" }), _vm._v(" ABOUT US")]
       )
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticStyle: { color: "#ffffff" }, attrs: { href: "#" } },
+      [_c("i", { staticClass: "fi-magnifying-glass" }), _vm._v(" ")]
+    )
   },
   function() {
     var _vm = this
@@ -58003,18 +58070,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "small-12 columns", attrs: { id: "pad" } },
-      [
-        _c("div", { staticClass: "grid-x" }, [
-          _c("img", {
-            staticClass: "pictures",
-            attrs: { src: __webpack_require__(107) }
-          })
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "grid-x" }, [
+      _c("div", { staticClass: "small-12 columns" }, [
+        _c("img", {
+          staticClass: "pictures",
+          staticStyle: { width: "100% !important" },
+          attrs: { src: __webpack_require__(107) }
+        })
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -58134,6 +58198,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     methods: {
         addToCart: function addToCart() {
             __WEBPACK_IMPORTED_MODULE_5__Cart_cart__["a" /* default */].add(this.item);
+            __WEBPACK_IMPORTED_MODULE_2__helpers_msg__["a" /* default */].setSuccess(this.item.title + ' Successfully Added');
         },
         dec: function dec() {
             __WEBPACK_IMPORTED_MODULE_5__Cart_cart__["a" /* default */].dec(this.item);
@@ -58360,13 +58425,10 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "small-12 columns action actions" }, [
-    _c("div", { staticClass: "grid-x", staticStyle: { padding: "30px" } }, [
+    _c("div", { staticClass: "grid-x" }, [
       _c(
         "div",
-        {
-          staticClass: "medium-6 large-12 cell",
-          staticStyle: { color: "#ffffff" }
-        },
+        { staticClass: "small-12 columns", staticStyle: { color: "#ffffff" } },
         [
           _c(
             "h5",
@@ -58483,7 +58545,21 @@ var render = function() {
             _vm._v(" "),
             _c("action-section"),
             _vm._v(" "),
-            _c("foot-data")
+            _c("foot-data"),
+            _vm._v(" "),
+            _vm.msg.success
+              ? _c("div", { staticClass: "green" }, [
+                  _c("i", { staticClass: "fi-check" }),
+                  _vm._v("  " + _vm._s(_vm.msg.success) + "\n            ")
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.msg.error
+              ? _c("div", { staticClass: "red" }, [
+                  _c("i", { staticClass: "fi-info" }),
+                  _vm._v("  " + _vm._s(_vm.msg.error) + "\n            ")
+                ])
+              : _vm._e()
           ],
           1
         )
@@ -58602,6 +58678,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -58660,7 +58742,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$http.delete('api/items/' + item.id).then(function (response) {
                 var index = _this2.items.indexOf(item);
                 _this2.items.splice(index, 1);
-                __WEBPACK_IMPORTED_MODULE_2__helpers_msg__["a" /* default */].setSuccess('The Item Has been Removed!');
+                __WEBPACK_IMPORTED_MODULE_2__helpers_msg__["a" /* default */].setSuccess(item.title + ' Has been Removed');
             });
         }
     }
@@ -59018,7 +59100,7 @@ var staticRenderFns = [
           [
             _c("img", {
               staticClass: "logo",
-              staticStyle: { width: "107px" },
+              staticStyle: { width: "96px" },
               attrs: { src: __webpack_require__(43) }
             })
           ]
@@ -59106,25 +59188,33 @@ var render = function() {
               staticStyle: { "text-align": "center", color: "#0A0A0A" }
             },
             [
-              _vm.msg.success
-                ? _c("div", { staticClass: "green" }, [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.msg.success) +
-                        "\n                "
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.msg.error
-                ? _c("div", { staticClass: "red" }, [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.msg.error) +
-                        "\n                "
-                    )
-                  ])
-                : _vm._e(),
+              _c("div", { staticClass: "grid-x" }, [
+                _c("div", { staticClass: "small-4 columns" }, [
+                  _vm.msg.success
+                    ? _c("div", { staticClass: "green" }, [
+                        _c("i", { staticClass: "fi-check" }),
+                        _vm._v(
+                          "  " +
+                            _vm._s(_vm.msg.success) +
+                            "\n                        "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.msg.error
+                    ? _c("div", { staticClass: "red" }, [
+                        _c("i", { staticClass: "fi-info" }),
+                        _vm._v(
+                          " " +
+                            _vm._s(_vm.msg.error) +
+                            "\n                        "
+                        )
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "small-8 columns" })
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "grid-x padded paddy" }, [
                 _c(
@@ -59739,21 +59829,17 @@ var render = function() {
             [
               _vm.msg.success
                 ? _c("div", { staticClass: "green" }, [
+                    _c("i", { staticClass: "fi-check" }),
                     _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.msg.success) +
-                        "\n                "
+                      "  " + _vm._s(_vm.msg.success) + "\n                "
                     )
                   ])
                 : _vm._e(),
               _vm._v(" "),
               _vm.msg.error
                 ? _c("div", { staticClass: "red" }, [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.msg.error) +
-                        "\n                "
-                    )
+                    _c("i", { staticClass: "fi-info" }),
+                    _vm._v("  " + _vm._s(_vm.msg.error) + "\n                ")
                   ])
                 : _vm._e(),
               _vm._v(" "),
@@ -60201,6 +60287,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -60476,7 +60563,7 @@ var render = function() {
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _c("div", { staticClass: "green", staticStyle: { width: "auto" } }, [
+          _c("div", { staticClass: "greenx", staticStyle: { width: "auto" } }, [
             _vm._m(3),
             _vm._v("  "),
             _c("span", [
@@ -60614,6 +60701,10 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "small-1 columns" })
       ]),
+      _vm._v(" "),
+      _c("br"),
+      _c("br"),
+      _c("br"),
       _vm._v(" "),
       _c("footer-view")
     ],
