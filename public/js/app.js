@@ -10589,7 +10589,8 @@ function post(url, data) {
         url: url,
         data: data,
         headers: {
-            'Authorization': 'Bearer ' + __WEBPACK_IMPORTED_MODULE_2__store_auth__["a" /* default */].state.api_token
+            'Authorization': 'Bearer ' + __WEBPACK_IMPORTED_MODULE_2__store_auth__["a" /* default */].state.api_token,
+            'Access-Control-Allow-Origin': '*'
         }
     });
 }
@@ -10598,7 +10599,11 @@ function get(url, params) {
     return __WEBPACK_IMPORTED_MODULE_0_axios___default()({
         method: 'GET',
         url: url,
-        params: params
+        params: params,
+        headers: {
+            'Authorization': 'Bearer ' + __WEBPACK_IMPORTED_MODULE_2__store_auth__["a" /* default */].state.api_token,
+            'Access-Control-Allow-Origin': '*'
+        }
     });
 }
 
@@ -10606,7 +10611,11 @@ function byMethod(method, url, data) {
     return __WEBPACK_IMPORTED_MODULE_0_axios___default()({
         method: method,
         url: url,
-        data: data
+        data: data,
+        headers: {
+            'Authorization': 'Bearer ' + __WEBPACK_IMPORTED_MODULE_2__store_auth__["a" /* default */].state.api_token,
+            'Access-Control-Allow-Origin': '*'
+        }
     });
 }
 
