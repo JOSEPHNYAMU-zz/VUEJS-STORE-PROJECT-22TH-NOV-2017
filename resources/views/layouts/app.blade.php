@@ -10,6 +10,8 @@
     <title>Cytonn Mall</title>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/fonts/fonts.css') }}" />
+
 </head>
 <body>
     <div id="app">
