@@ -27,7 +27,7 @@
                    </div>
                    <div class="form-group">
                        <label for="body">Description</label>
-                       <textarea minlength="55" maxlength="60" rows="5" class="form-control" v-model="item.description" required id="body" placeholder="Product Description"></textarea>
+                       <textarea rows="5" class="form-control" v-model="item.description" required id="body" placeholder="Product Description"></textarea>
                    </div>
                    <button type="submit" class="button primary expanded"><i class="fi-plus"></i>&nbsp;ADD ITEM</button>
                </form>
@@ -87,9 +87,16 @@
                 this.$http.post('api/items', this.item)
                     .then(response => {
                         if (response.data) {
-                            Msg.setSuccess('Item Has been successfully Added to the store!')
+                            Msg.setSuccess(this.item.title + ' Has been successfully Added to the store!');
+                            this.$router.push('/shop')
                         }
-                    });
+                    })
+                    .catch((err) => {
+                        if (err.response.status === 422) {
+                            this.error = err.response.data;
+                            Msg.setError('There was a problem adding the item, please try again!!')
+                        }
+                    })
             }
         }
 

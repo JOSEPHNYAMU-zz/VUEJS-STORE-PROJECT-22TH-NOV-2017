@@ -64,15 +64,6 @@
     import _ from 'lodash'
     import State from '../Cart/cart'
 
-    //    Vue.directive('data-dropdown-menu', {
-    //        bind: function (el) {
-    //            new Foundation.DropdownMenu($(el));
-    //        }
-    //        , unbind: function (el) {
-    //            $(el).foundation.destroy()
-    //        }
-    //    });
-
     export default {
         mounted() {
             $(this.$el).foundation();

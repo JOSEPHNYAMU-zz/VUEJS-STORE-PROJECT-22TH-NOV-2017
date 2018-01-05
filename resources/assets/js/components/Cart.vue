@@ -62,8 +62,8 @@
         <div class="reveal" id="checks" data-reveal>
             <h5 class="greens"><i class="fi-check"></i>&nbsp;Checkout Successful</h5>
             <hr/>
-            Hello,<br/>
-            Thank You for shopping with us!!...You have successfully purchased the goods at Cytonn Mall.
+            <strong>Hello {{auth.name}},</strong><br/>
+            Thank You for shopping with us!!...You have successfully purchased goods at Cytonn Mall.<br/>
             Your Order will be processed in few minutes.<br/></br>
             <strong>Cytonn Mall<br/>
                 Fedha Plaza<br/>

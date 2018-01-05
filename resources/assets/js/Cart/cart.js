@@ -6,11 +6,6 @@ export default {
         var found = _.find(this.data.cart, ['id', item.id]);
         if (typeof found != 'object') {
 
-            // if(this.data.cart.length == 0){
-            //     initials == 1
-            // }else{
-            //     initials = initials++
-            // }
             this.data.cart.push({
                 id: item.id,
                 title: item.title,

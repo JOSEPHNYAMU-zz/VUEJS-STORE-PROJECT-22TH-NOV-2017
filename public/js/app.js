@@ -39720,11 +39720,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         var found = _.find(this.data.cart, ['id', item.id]);
         if ((typeof found === 'undefined' ? 'undefined' : _typeof(found)) != 'object') {
 
-            // if(this.data.cart.length == 0){
-            //     initials == 1
-            // }else{
-            //     initials = initials++
-            // }
             this.data.cart.push({
                 id: item.id,
                 title: item.title,
@@ -51713,6 +51708,17 @@ module.exports = function spread(callback) {
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.filter('formatMoney', function (value) {
     return Number(value).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 });
+
+var filter = function filter(text, length, clamp) {
+    clamp = clamp || '...';
+    var node = document.createElement('div');
+    node.innerHTML = text;
+    var content = node.textContent;
+    return content.length > length ? content.slice(0, length) + clamp : content;
+};
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.filter('truncate', filter);
+
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_2__components_All_vue___default.a }, { path: '/shop', component: __WEBPACK_IMPORTED_MODULE_3__components_Shop_vue___default.a }, { path: '/add', component: __WEBPACK_IMPORTED_MODULE_4__components_Add_vue___default.a }, { path: '/account', component: __WEBPACK_IMPORTED_MODULE_7__components_Account_vue___default.a }, { path: '/contact', component: __WEBPACK_IMPORTED_MODULE_6__components_Contact_vue___default.a }, { path: '/item/:item/edit', component: __WEBPACK_IMPORTED_MODULE_5__components_Update_vue___default.a }]
@@ -56755,7 +56761,29 @@ var render = function() {
           _c("br")
         ]),
     _vm._v(" "),
-    _vm._m(4)
+    _c(
+      "div",
+      { staticClass: "reveal", attrs: { id: "checks", "data-reveal": "" } },
+      [
+        _vm._m(4),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("strong", [_vm._v("Hello " + _vm._s(_vm.auth.name) + ",")]),
+        _c("br"),
+        _vm._v(
+          "\n        Thank You for shopping with us!!...You have successfully purchased goods at Cytonn Mall."
+        ),
+        _c("br"),
+        _vm._v("\n        Your Order will be processed in few minutes."),
+        _c("br"),
+        _c("br"),
+        _vm._v(" "),
+        _vm._m(5),
+        _vm._v(" "),
+        _vm._m(6)
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -56803,45 +56831,38 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("h5", { staticClass: "greens" }, [
+      _c("i", { staticClass: "fi-check" }),
+      _vm._v(" Checkout Successful")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _vm._v("Cytonn Mall"),
+      _c("br"),
+      _vm._v("\n            Fedha Plaza"),
+      _c("br"),
+      _vm._v("\n            0722563684")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
-      "div",
-      { staticClass: "reveal", attrs: { id: "checks", "data-reveal": "" } },
-      [
-        _c("h5", { staticClass: "greens" }, [
-          _c("i", { staticClass: "fi-check" }),
-          _vm._v(" Checkout Successful")
-        ]),
-        _vm._v(" "),
-        _c("hr"),
-        _vm._v("\n        Hello,"),
-        _c("br"),
-        _vm._v(
-          "\n        Thank You for shopping with us!!...You have successfully purchased the goods at Cytonn Mall.\n        Your Order will be processed in few minutes."
-        ),
-        _c("br"),
-        _c("br"),
-        _vm._v(" "),
-        _c("strong", [
-          _vm._v("Cytonn Mall"),
-          _c("br"),
-          _vm._v("\n            Fedha Plaza"),
-          _c("br"),
-          _vm._v("\n            0722563684")
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "close-button",
-            attrs: {
-              "data-close": "",
-              "aria-label": "Close reveal",
-              type: "button"
-            }
-          },
-          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-        )
-      ]
+      "button",
+      {
+        staticClass: "close-button",
+        attrs: {
+          "data-close": "",
+          "aria-label": "Close reveal",
+          type: "button"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
     )
   }
 ]
@@ -57698,6 +57719,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        $(this.$el).foundation();
+    },
+
     props: ['item'],
     data: function data() {
         return {
@@ -57785,7 +57810,15 @@ var render = function() {
               staticClass: "small-12 columns",
               staticStyle: { "border-top": "1px solid #f2f2f2" }
             },
-            [_c("small", [_c("i", [_vm._v(_vm._s(_vm.item.description))])])]
+            [
+              _c("small", [
+                _c("i", [
+                  _vm._v(
+                    _vm._s(_vm._f("truncate")(_vm.item.description, 55, "..."))
+                  )
+                ])
+              ])
+            ]
           ),
           _vm._v(" "),
           _c(
@@ -57837,7 +57870,12 @@ var render = function() {
                     "button",
                     {
                       staticClass: "button success float-right tiny",
-                      staticStyle: { "margin-left": "5px" }
+                      staticStyle: { "margin-left": "5px" },
+                      on: {
+                        click: function($event) {
+                          _vm.$emit("show-item")
+                        }
+                      }
                     },
                     [
                       _c("i", { staticClass: "fi-eye" }),
@@ -58684,6 +58722,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -58728,6 +58773,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             auth: __WEBPACK_IMPORTED_MODULE_1__store_auth__["a" /* default */].state,
             msg: __WEBPACK_IMPORTED_MODULE_2__helpers_msg__["a" /* default */].state,
             error: {},
+            selectedItem: '',
             items: []
         };
     },
@@ -58743,7 +58789,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var index = _this2.items.indexOf(item);
                 _this2.items.splice(index, 1);
                 __WEBPACK_IMPORTED_MODULE_2__helpers_msg__["a" /* default */].setSuccess(item.title + ' Has been Removed');
+            }).catch(function (err) {
+                if (err.response.status === 422) {
+                    _this2.error = err.response.data;
+                    __WEBPACK_IMPORTED_MODULE_2__helpers_msg__["a" /* default */].setError('There was a problem adding this item, please try again!!');
+                }
             });
+        },
+        viewItem: function viewItem() {
+            this.selectedItem = this.item;
+            console.log(this.item);
+            $('#views').foundation('open');
         }
     }
 });
@@ -58828,15 +58884,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
-//    Vue.directive('data-dropdown-menu', {
-//        bind: function (el) {
-//            new Foundation.DropdownMenu($(el));
-//        }
-//        , unbind: function (el) {
-//            $(el).foundation.destroy()
-//        }
-//    });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -59236,6 +59283,9 @@ var render = function() {
                             key: item.id,
                             attrs: { item: item },
                             on: {
+                              "show-item": function($event) {
+                                _vm.viewItem(item)
+                              },
                               "remove-item": function($event) {
                                 _vm.removeItem(item)
                               }
@@ -59254,12 +59304,45 @@ var render = function() {
         _c("div", { staticClass: "small-1 column" })
       ]),
       _vm._v(" "),
-      _c("footer-view")
+      _c("footer-view"),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "reveal", attrs: { id: "views", "data-reveal": "" } },
+        [
+          _c("h5", { staticClass: "greens" }, [
+            _c("i", { staticClass: "fi-check" }),
+            _vm._v(" " + _vm._s(_vm.selectedItem.title))
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(_vm.selectedItem.title))]),
+          _vm._v(" "),
+          _vm._m(0)
+        ]
+      )
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close-button",
+        attrs: {
+          "data-close": "",
+          "aria-label": "Close reveal",
+          type: "button"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -59421,9 +59504,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             console.log(this.item);
         },
         add: function add() {
+            var _this2 = this;
+
             this.$http.post('api/items', this.item).then(function (response) {
                 if (response.data) {
-                    __WEBPACK_IMPORTED_MODULE_2__helpers_msg__["a" /* default */].setSuccess('Item Has been successfully Added to the store!');
+                    __WEBPACK_IMPORTED_MODULE_2__helpers_msg__["a" /* default */].setSuccess(_this2.item.title + ' Has been successfully Added to the store!');
+                    _this2.$router.push('/shop');
+                }
+            }).catch(function (err) {
+                if (err.response.status === 422) {
+                    _this2.error = err.response.data;
+                    __WEBPACK_IMPORTED_MODULE_2__helpers_msg__["a" /* default */].setError('There was a problem adding the item, please try again!!');
                 }
             });
         }
@@ -59597,8 +59688,6 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
-                    minlength: "55",
-                    maxlength: "60",
                     rows: "5",
                     required: "",
                     id: "body",
@@ -59764,7 +59853,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     components: {
-        MainMenu: __WEBPACK_IMPORTED_MODULE_0__MenuLogged_vue___default.a,
         'main-menu': __WEBPACK_IMPORTED_MODULE_0__MenuLogged_vue___default.a,
         'footer-view': __WEBPACK_IMPORTED_MODULE_5__Footer_vue___default.a
     },
@@ -59787,9 +59875,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         update: function update() {
+            var _this2 = this;
+
             this.$http.put('api/items/' + this.$route.params.item, this.item).then(function (response) {
                 if (response.data) {
-                    __WEBPACK_IMPORTED_MODULE_2__helpers_msg__["a" /* default */].setSuccess('Item Has been successfully Updated!');
+                    __WEBPACK_IMPORTED_MODULE_2__helpers_msg__["a" /* default */].setSuccess(_this2.item.title + ' Has been successfully Updated!');
+                    _this2.$router.push('/shop');
+                }
+            }).catch(function (err) {
+                if (err.response.status === 422) {
+                    _this2.error = err.response.data;
+                    __WEBPACK_IMPORTED_MODULE_2__helpers_msg__["a" /* default */].setError('There was a problem updating the item, please try again!!');
                 }
             });
         }
@@ -59926,8 +60022,6 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
-                    minlength: "55",
-                    maxlength: "60",
                     required: "",
                     rows: "5",
                     required: "",

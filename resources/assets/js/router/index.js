@@ -12,6 +12,17 @@ Vue.filter('formatMoney', (value) => {
         .toFixed(2)
         .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
 });
+
+var filter = function(text, length, clamp){
+    clamp = clamp || '...';
+    var node = document.createElement('div');
+    node.innerHTML = text;
+    var content = node.textContent;
+    return content.length > length ? content.slice(0, length) + clamp : content;
+};
+
+Vue.filter('truncate', filter);
+
 Vue.use(VueRouter);
 const router = new VueRouter({
     routes: [

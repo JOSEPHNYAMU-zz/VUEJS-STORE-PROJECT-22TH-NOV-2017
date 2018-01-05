@@ -12,7 +12,7 @@
                         <small class="price" v-if="qtyInCart > 0">x{{qtyInCart}}</small>
                     </div>
                     <div class="small-12 columns" style="border-top: 1px solid #f2f2f2;">
-                        <small><i>{{item.description}}</i></small>
+                        <small><i>{{item.description | truncate(55, '...') }}</i></small>
                     </div>
 
                     <div class="small-12 columns">
@@ -30,7 +30,7 @@
                             </span>
                                             </span>
                         <button v-if="auth.role == 'User' || logged == false" style="margin-left: 5px;"
-                                class="button success float-right tiny"><i
+                                class="button success float-right tiny" @click="$emit('show-item')"><i
                                 class="fi-eye"></i>&nbsp;View
                         </button>
                         <button v-if="auth.role === 'Admin'"
@@ -57,6 +57,9 @@
     import State from '../Cart/cart'
 
     export default {
+        mounted() {
+            $(this.$el).foundation();
+        },
         props: ['item'],
         data() {
             return {
