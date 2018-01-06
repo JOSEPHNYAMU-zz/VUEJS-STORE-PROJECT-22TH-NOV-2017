@@ -58810,7 +58810,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: item.title + " Specifications",
                 html: true,
                 text: "FEATURES: " + item.description + "\nPRICE: " + item.price + "/=\n",
-                icon: "http://mall.net/images/" + item.image,
+                icon: "https://www.cytonnmall.ml/images/" + item.image,
                 button: {
                     text: "CLOSE"
                 }
