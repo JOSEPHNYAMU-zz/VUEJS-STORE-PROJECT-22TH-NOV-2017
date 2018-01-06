@@ -30,7 +30,7 @@
                 <tr v-for="item in items" v-if="item.qty != 0">
                     <td>
                         <img style="width:40px;height:40px;border-radius: 3px;margin-bottom: 8px;"
-                             :src="'https://www.cytonnmall.ml/' + item.image">
+                             :src="'https://www.cytonnmall.ml/images/' + item.image">
                     </td>
                     <td>
                         <small>{{item.title}}</small>
