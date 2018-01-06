@@ -32,16 +32,10 @@
                 </div>
             </div>
             <div class="small-1 column">
+                <!-- Empty Div -->
             </div>
         </div>
         <footer-view></footer-view>
-        <div class="reveal" id="views" data-reveal>
-            <h5 class="greens"><i class="fi-check"></i>&nbsp;{{selectedItem.title}}</h5>
-            <p>{{ selectedItem.title }}</p>
-            <button class="close-button" data-close aria-label="Close reveal" type="button">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
     </div>
 </template>
 <script>
@@ -88,31 +82,51 @@
                 error: {},
                 selectedItem: '',
                 items: []
+
             }
         },
         mounted() {
             $(this.$el).foundation();
         },
         methods:{
-            removeItem(item) {
-                this.$http.delete('api/items/' + item.id)
-                    .then(response => {
-                        let index = this.items.indexOf(item);
-                        this.items.splice(index, 1);
-                        Msg.setSuccess(item.title + ' Has been Removed')
-                    })
-                    .catch((err) => {
-                    if (err.response.status === 422) {
-                        this.error = err.response.data;
-                        Msg.setError('There was a problem adding this item, please try again!!')
-                    }
-                })
+            viewItem(item) {
+                swal({
+                    title: item.title + " Specifications",
+                    html: true,
+                    text: "FEATURES: " + item.description + "\nPRICE: " + item.price + "/=\n",
+                    icon: "http://mall.net/images/"+ item.image,
+                    button: {
+                        text: "CLOSE",
+                    },
+                });
             },
-        viewItem() {
-            this.selectedItem = this.item;
-            console.log(this.item)
-$('#views').foundation('open');
-        }
+            removeItem(item) {
+                swal({
+                    title: "Delete " + item.title + "?",
+                    text: "Once deleted, you will not be able to recover this item!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+
+                            this.$http.delete('api/items/' + item.id)
+                                .then(response => {
+                                    let index = this.items.indexOf(item);
+                                    this.items.splice(index, 1);
+                            swal("Poof! " + item.title + " has been deleted!", {
+                                icon: "success",
+                            })})
+                        .catch((err) => {
+                                if (err.response.status === 422) {
+                                    this.error = err.response.data;
+                                    swal("There was a problem deleting " + item.title);
+                                }
+                            })
+                        }
+                    });
+            }
         }
     }
 </script>

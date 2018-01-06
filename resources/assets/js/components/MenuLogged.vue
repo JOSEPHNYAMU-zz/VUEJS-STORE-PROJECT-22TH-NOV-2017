@@ -28,7 +28,7 @@
             </div>
             <div class="top-bar-right" style="background-color:rgba(0,0,0,0.5);">
                 <ul style="background-color:rgba(0,0,0,0.5);padding:20px;" class="dropdown menu"
-                    data-options="disableHover:true;clickOpen:true" data-dropdown-menu>
+                    data-dropdown-menu>
                     <li style="font-family: 'Proxima Nova Regular', sans-serif;">
                         <a href="#" style="color:#ffffff;" data-open="account"><i
                                 class="fi-torsos"></i>&nbsp;{{auth.name}}</a>
