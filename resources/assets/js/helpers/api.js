@@ -4,9 +4,8 @@ import Auth from '../store/auth'
 import VueResource from 'vue-resource'
 import swal from 'sweetalert';
 
-
 Vue.use(VueResource);
-Vue.http.options.root = 'https://www.cytonnmall.ml';
+Vue.http.options.root = 'https://cytonnmall.ml';
 
 export function post(url, data) {
     return axios({

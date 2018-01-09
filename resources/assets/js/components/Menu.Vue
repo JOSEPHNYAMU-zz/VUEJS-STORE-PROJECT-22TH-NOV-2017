@@ -31,7 +31,7 @@
                         <ul class="menu vertical" style="width:400px;border-radius:3px;">
                             <form action="#">
                                 <div class="form-group">
-                                    <input type="text" v-model="keywords" style="max-width:100% !important;"
+                                    <input type="text" v-model="search" style="max-width:100% !important;"
                                            class="form-control" placeholder="Search..."/>
                                 </div>
                             </form>
@@ -67,6 +67,7 @@
     import axios from 'axios'
 
     export default {
+        props: ['item'],
         data() {
             return {
                 keywords: '',
@@ -79,24 +80,22 @@
         components: {
             'item-cart': Cart
         },
+
+        computed: {
+            item() {
+                return this.cart.filter(items => {
+                    return items.title.toLowerCase().includes(this.search.toLowerCase())
+                })
+            }
+        },
+
+
         methods: {
             searchAfterDebounce: _.debounce(
                 function () {
                     this.search()
                 }, 500
             ),
-            search() {
-                if (keywords.length > 1) {
-                    axios.get('/api/items').then(response => {
-                        this.results = response.data
-                    })
-                }
-            }
-        },
-        watch: {
-            keywords: function (val) {
-                this.searchAfterDebounce()
-            }
         }
     }
 </script>

@@ -15,7 +15,8 @@
                         <div class="medium-6 large-12 cell" style="color:#ffffff;">
                             <div class="grid-container">
                                 <div class="grid-x grid-padding-x small-up-2 medium-up-4">
-                                    <store-items @show-item="viewItem(item)" v-for="item in items" :item="item" :key="item.id"></store-items>
+                                    <store-items @show-item="viewItem(item)" v-for="item in items" :item="item"
+                                                 :key="item.id"></store-items>
                                 </div>
                             </div>
                         </div>
@@ -84,14 +85,14 @@
                 items: []
             }
         },
-        methods:{
+        methods: {
             viewItem(item) {
 
                 swal({
                     title: item.title + " Specifications",
                     html: true,
                     text: "FEATURES: " + item.description + "\nPRICE: " + item.price + "/=\n",
-                    icon: "https://www.cytonnmall.ml/images/"+ item.image,
+                    icon: "https://cytonnmall.ml/images/" + item.image,
                     button: {
                         text: "CLOSE",
                     },

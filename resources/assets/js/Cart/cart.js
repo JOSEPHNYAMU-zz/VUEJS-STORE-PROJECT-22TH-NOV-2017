@@ -1,5 +1,6 @@
 export default {
     data: {
+        search: '',
         cart: []
     },
     add(item) {

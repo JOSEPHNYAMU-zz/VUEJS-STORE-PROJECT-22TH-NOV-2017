@@ -17,14 +17,15 @@
                             </div>
                         </div>
                         <div class="small-8 columns">
-                         <!-- Empty Div -->
+                            <!-- Empty Div -->
                         </div>
                     </div>
                     <div class="grid-x padded paddy">
                         <div class="medium-6 large-12 cell" style="color:#ffffff;">
                             <div class="grid-container">
                                 <div class="grid-x grid-padding-x small-up-2 medium-up-4">
-                                    <store-items @show-item="viewItem(item)" @remove-item="removeItem(item)" v-for="item in items" :item="item" :key="item.id"></store-items>
+                                    <store-items @show-item="viewItem(item)" @remove-item="removeItem(item)"
+                                                 v-for="item in items" :item="item" :key="item.id"></store-items>
                                 </div>
                             </div>
                         </div>
@@ -88,13 +89,13 @@
         mounted() {
             $(this.$el).foundation();
         },
-        methods:{
+        methods: {
             viewItem(item) {
                 swal({
                     title: item.title + " Specifications",
                     html: true,
                     text: "FEATURES: " + item.description + "\nPRICE: " + item.price + "/=\n",
-                    icon: "https://www.cytonnmall.ml/images/"+ item.image,
+                    icon: "http://mall.net/images/" + item.image,
                     button: {
                         text: "CLOSE",
                     },
@@ -115,15 +116,16 @@
                                 .then(response => {
                                     let index = this.items.indexOf(item);
                                     this.items.splice(index, 1);
-                            swal("Poof! " + item.title + " has been deleted!", {
-                                icon: "success",
-                            })})
-                        .catch((err) => {
-                                if (err.response.status === 422) {
-                                    this.error = err.response.data;
-                                    swal("There was a problem deleting " + item.title);
-                                }
-                            })
+                                    swal("Poof! " + item.title + " has been deleted!", {
+                                        icon: "success",
+                                    })
+                                })
+                                .catch((err) => {
+                                    if (err.response.status === 422) {
+                                        this.error = err.response.data;
+                                        swal("There was a problem deleting " + item.title);
+                                    }
+                                })
                         }
                     });
             }

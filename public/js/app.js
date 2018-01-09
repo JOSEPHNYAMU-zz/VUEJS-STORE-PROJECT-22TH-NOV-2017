@@ -10584,7 +10584,7 @@ function getPluginName(obj) {
 
 
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue_resource__["a" /* default */]);
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.http.options.root = 'https://www.cytonnmall.ml';
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.http.options.root = 'http://mall.net';
 
 function post(url, data) {
     return __WEBPACK_IMPORTED_MODULE_0_axios___default()({
@@ -39717,6 +39717,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: {
+        search: '',
         cart: []
     },
     add: function add(item) {
@@ -54783,7 +54784,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: item.title + " Specifications",
                 html: true,
                 text: "FEATURES: " + item.description + "\nPRICE: " + item.price + "/=\n",
-                icon: "https://www.cytonnmall.ml/images/" + item.image,
+                icon: "http://mall.net/images/" + item.image,
                 button: {
                     text: "CLOSE"
                 }
@@ -54889,6 +54890,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['item'],
     data: function data() {
         return {
             keywords: '',
@@ -54902,24 +54904,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         'item-cart': __WEBPACK_IMPORTED_MODULE_3__Cart_vue___default.a
     },
+
+    computed: {
+        item: function item() {
+            var _this = this;
+
+            return this.cart.filter(function (items) {
+                return items.title.toLowerCase().includes(_this.search.toLowerCase());
+            });
+        }
+    },
+
     methods: {
         searchAfterDebounce: __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.debounce(function () {
             this.search();
-        }, 500),
-        search: function search() {
-            var _this = this;
-
-            if (keywords.length > 1) {
-                __WEBPACK_IMPORTED_MODULE_6_axios___default.a.get('/api/items').then(function (response) {
-                    _this.results = response.data;
-                });
-            }
-        }
-    },
-    watch: {
-        keywords: function keywords(val) {
-            this.searchAfterDebounce();
-        }
+        }, 500)
     }
 });
 
@@ -56678,10 +56677,7 @@ var render = function() {
                             "border-radius": "3px",
                             "margin-bottom": "8px"
                           },
-                          attrs: {
-                            src:
-                              "https://www.cytonnmall.ml/images/" + item.image
-                          }
+                          attrs: { src: "http://mall.net/images/" + item.image }
                         })
                       ]),
                       _vm._v(" "),
@@ -57013,20 +57009,20 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.keywords,
-                                expression: "keywords"
+                                value: _vm.search,
+                                expression: "search"
                               }
                             ],
                             staticClass: "form-control",
                             staticStyle: { "max-width": "100% !important" },
                             attrs: { type: "text", placeholder: "Search..." },
-                            domProps: { value: _vm.keywords },
+                            domProps: { value: _vm.search },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
                                   return
                                 }
-                                _vm.keywords = $event.target.value
+                                _vm.search = $event.target.value
                               }
                             }
                           })
@@ -57796,7 +57792,7 @@ var render = function() {
     _c("div", { staticClass: "card" }, [
       _c("img", {
         staticClass: "imgs imgx",
-        attrs: { src: "https://www.cytonnmall.ml/images/" + _vm.item.image }
+        attrs: { src: "http://mall.net/images/" + _vm.item.image }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "card-section" }, [
@@ -58810,7 +58806,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: item.title + " Specifications",
                 html: true,
                 text: "FEATURES: " + item.description + "\nPRICE: " + item.price + "/=\n",
-                icon: "https://www.cytonnmall.ml/images/" + item.image,
+                icon: "http://mall.net/images/" + item.image,
                 button: {
                     text: "CLOSE"
                 }
@@ -60625,10 +60621,7 @@ var render = function() {
                             "border-radius": "3px",
                             "margin-bottom": "8px"
                           },
-                          attrs: {
-                            src:
-                              "https://www.cytonnmall.ml/images/" + item.image
-                          }
+                          attrs: { src: "http://mall.net/images/" + item.image }
                         })
                       ]),
                       _vm._v(" "),

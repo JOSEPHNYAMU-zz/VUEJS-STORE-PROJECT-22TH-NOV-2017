@@ -1,7 +1,7 @@
 <template>
     <div class="cell">
         <div class="card">
-            <img class="imgs imgx" :src="'https://www.cytonnmall.ml/images/' + item.image">
+            <img class="imgs imgx" :src="'https://cytonnmall.ml/images/' + item.image">
             <div class="card-section">
                 <div class="grid-x">
                     <div class="small-6 columns float-left">
@@ -29,7 +29,8 @@
                             <button class="button tiny primary" @click="inc"><i class="fi-plus"></i></button>
                             </span>
                                             </span>
-                        <button  @click="$emit('show-item')" v-if="auth.role == 'User' || logged == false" style="margin-left: 5px;"
+                        <button @click="$emit('show-item')" v-if="auth.role == 'User' || logged == false"
+                                style="margin-left: 5px;"
                                 class="button success float-right tiny"><i
                                 class="fi-eye"></i>&nbsp;View
                         </button>

@@ -30,7 +30,7 @@
                 <tr v-for="item in items" v-if="item.qty != 0">
                     <td>
                         <img style="width:40px;height:40px;border-radius: 3px;margin-bottom: 8px;"
-                             :src="'https://www.cytonnmall.ml/images/' + item.image">
+                             :src="'https://cytonnmall.ml/images/' + item.image">
                     </td>
                     <td>
                         <small>{{item.title}}</small>
@@ -50,13 +50,18 @@
             <div class="greenx" style="width:auto;">
                 <span><strong>Total</strong></span>&nbsp;&nbsp;<span>Ksh. {{total | formatMoney}}</span></div>
             <br/>
-            <div v-if="auth.role != 'User'" >
+            <div v-if="auth.role != 'User'">
                 <router-link class="menus" to="/account" style="margin:0;padding:0;">
-            <button class="button tiny primary float-right" data-open="account"><i class="fi-unlock"></i>&nbsp;Login to Checkout</button>
-            <button style="margin-right: 7px;" data-open="register" class="button tiny alert float-right"><i class="fi-pencil"></i>&nbsp;Register to Checkout</button>
+                    <button class="button tiny primary float-right" data-open="account"><i class="fi-unlock"></i>&nbsp;Login to Checkout
+                    </button>
+                    <button style="margin-right: 7px;" data-open="register" class="button tiny alert float-right"><i
+                            class="fi-pencil"></i>&nbsp;Register to Checkout
+                    </button>
                 </router-link>
             </div>
-            <button v-if="auth.role == 'User'" data-open="checks" class="button tiny success float-right"><i class="fi-paypal"></i>&nbsp;Checkout</button>
+            <button v-if="auth.role == 'User'" data-open="checks" class="button tiny success float-right"><i
+                    class="fi-paypal"></i>&nbsp;Checkout
+            </button>
             <br/><br/>
         </div>
         <div class="reveal" id="checks" data-reveal>
