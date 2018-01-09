@@ -1,6 +1,6 @@
 <template>
     <div class="small-12 columns" id="foot" style="text-align:center;padding:65px;color:#0A0A0A;">
-        <div class="small-12 columns" style="text-align:center;padding:20px;color:#0A0A0A;">
+        <div v-if="auth.role === 'User'" class="small-12 columns" style="text-align:center;padding:20px;color:#0A0A0A;">
             <div class="grid-x">
                 <div class="medium-6 large-6 cell" style="text-align: left;">
                     <h4 style="color:#919294;font-family: 'Proxima Nova Regular', sans-serif;">
@@ -43,3 +43,46 @@
         </div>
     </div>
 </template>
+
+<script>
+    import Auth from '../store/auth'
+    import {post} from '../helpers/api'
+    import {get} from '../helpers/api'
+    import Vue from 'vue'
+    import Cart from './Cart.vue'
+    import _ from 'lodash'
+    import State from '../Cart/cart'
+
+    export default {
+        mounted() {
+            $(this.$el).foundation();
+        },
+        components: {
+            'item-cart': Cart
+        },
+        data() {
+            return {
+                auth: Auth.state
+            }
+        },
+        computed: {
+            logged() {
+                if (this.auth.api_token && this.auth.role) {
+                    return true
+                }
+                return false
+            }
+        },
+        methods: {
+            logout() {
+                post(`/api/logout`)
+                    .then((res) => {
+                        if (res.data.signOut) {
+                            Auth.remove();
+                            this.$router.push('/');
+                        }
+                    })
+            }
+        }
+    }
+</script>
