@@ -31,7 +31,7 @@
                         <ul class="menu vertical" style="width:400px;border-radius:3px;">
                             <form action="#">
                                 <div class="form-group">
-                                    <input type="text" v-model="search" style="max-width:100% !important;"
+                                    <input type="text" style="max-width:100% !important;"
                                            class="form-control" placeholder="Search..."/>
                                 </div>
                             </form>
