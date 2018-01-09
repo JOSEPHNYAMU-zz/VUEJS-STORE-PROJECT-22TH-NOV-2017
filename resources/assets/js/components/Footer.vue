@@ -1,6 +1,7 @@
 <template>
     <div class="small-12 columns" id="foot" style="text-align:center;padding:65px;color:#0A0A0A;">
-        <div v-if="auth.role === 'User'" class="small-12 columns" style="text-align:center;padding:20px;color:#0A0A0A;">
+        <div v-if="logged == false ||  auth.role == 'User'"
+             class="small-12 columns" style="text-align:center;padding:20px;color:#0A0A0A;">
             <div class="grid-x">
                 <div class="medium-6 large-6 cell" style="text-align: left;">
                     <h4 style="color:#919294;font-family: 'Proxima Nova Regular', sans-serif;">
