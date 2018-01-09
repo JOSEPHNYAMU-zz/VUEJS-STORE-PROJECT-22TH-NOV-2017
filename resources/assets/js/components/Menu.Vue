@@ -67,7 +67,6 @@
     import axios from 'axios'
 
     export default {
-        props: ['item'],
         data() {
             return {
                 keywords: '',
