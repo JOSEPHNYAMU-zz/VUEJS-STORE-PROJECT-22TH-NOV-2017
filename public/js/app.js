@@ -10584,7 +10584,7 @@ function getPluginName(obj) {
 
 
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue_resource__["a" /* default */]);
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.http.options.root = 'http://mall.net';
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.http.options.root = 'https://cytonnmall.ml';
 
 function post(url, data) {
     return __WEBPACK_IMPORTED_MODULE_0_axios___default()({
@@ -54723,6 +54723,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -54784,7 +54785,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: item.title + " Specifications",
                 html: true,
                 text: "FEATURES: " + item.description + "\nPRICE: " + item.price + "/=\n",
-                icon: "http://mall.net/images/" + item.image,
+                icon: "https://cytonnmall.ml/images/" + item.image,
                 button: {
                     text: "CLOSE"
                 }
@@ -56602,6 +56603,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -56677,7 +56683,9 @@ var render = function() {
                             "border-radius": "3px",
                             "margin-bottom": "8px"
                           },
-                          attrs: { src: "http://mall.net/images/" + item.image }
+                          attrs: {
+                            src: "https://cytonnmall.ml/images/" + item.image
+                          }
                         })
                       ]),
                       _vm._v(" "),
@@ -56742,7 +56750,7 @@ var render = function() {
                         },
                         [
                           _c("i", { staticClass: "fi-unlock" }),
-                          _vm._v(" Login to Checkout")
+                          _vm._v(" Login to Checkout\n                ")
                         ]
                       ),
                       _vm._v(" "),
@@ -56755,7 +56763,7 @@ var render = function() {
                         },
                         [
                           _c("i", { staticClass: "fi-pencil" }),
-                          _vm._v(" Register to Checkout")
+                          _vm._v(" Register to Checkout\n                ")
                         ]
                       )
                     ]
@@ -56772,7 +56780,10 @@ var render = function() {
                   staticClass: "button tiny success float-right",
                   attrs: { "data-open": "checks" }
                 },
-                [_c("i", { staticClass: "fi-paypal" }), _vm._v(" Checkout")]
+                [
+                  _c("i", { staticClass: "fi-paypal" }),
+                  _vm._v(" Checkout\n        ")
+                ]
               )
             : _vm._e(),
           _vm._v(" "),
@@ -56992,45 +57003,7 @@ var render = function() {
                 }
               },
               [
-                _c("li", [
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _c(
-                    "ul",
-                    {
-                      staticClass: "menu vertical",
-                      staticStyle: { width: "400px", "border-radius": "3px" }
-                    },
-                    [
-                      _c("form", { attrs: { action: "#" } }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.search,
-                                expression: "search"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            staticStyle: { "max-width": "100% !important" },
-                            attrs: { type: "text", placeholder: "Search..." },
-                            domProps: { value: _vm.search },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.search = $event.target.value
-                              }
-                            }
-                          })
-                        ])
-                      ])
-                    ]
-                  )
-                ]),
+                _vm._m(3),
                 _vm._v(" "),
                 _c(
                   "li",
@@ -57143,11 +57116,31 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticStyle: { color: "#ffffff" }, attrs: { href: "#" } },
-      [_c("i", { staticClass: "fi-magnifying-glass" }), _vm._v(" ")]
-    )
+    return _c("li", [
+      _c("a", { staticStyle: { color: "#ffffff" }, attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fi-magnifying-glass" }),
+        _vm._v(" ")
+      ]),
+      _vm._v(" "),
+      _c(
+        "ul",
+        {
+          staticClass: "menu vertical",
+          staticStyle: { width: "400px", "border-radius": "3px" }
+        },
+        [
+          _c("form", { attrs: { action: "#" } }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("input", {
+                staticClass: "form-control",
+                staticStyle: { "max-width": "100% !important" },
+                attrs: { type: "text", placeholder: "Search..." }
+              })
+            ])
+          ])
+        ]
+      )
+    ])
   },
   function() {
     var _vm = this
@@ -57728,6 +57721,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 //
 //
+//
 
 
 
@@ -57792,7 +57786,7 @@ var render = function() {
     _c("div", { staticClass: "card" }, [
       _c("img", {
         staticClass: "imgs imgx",
-        attrs: { src: "http://mall.net/images/" + _vm.item.image }
+        attrs: { src: "https://cytonnmall.ml/images/" + _vm.item.image }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "card-section" }, [
@@ -58747,6 +58741,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -58806,7 +58801,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: item.title + " Specifications",
                 html: true,
                 text: "FEATURES: " + item.description + "\nPRICE: " + item.price + "/=\n",
-                icon: "http://mall.net/images/" + item.image,
+                icon: "https://cytonnmall.ml/images/" + item.image,
                 button: {
                     text: "CLOSE"
                 }
@@ -60621,7 +60616,9 @@ var render = function() {
                             "border-radius": "3px",
                             "margin-bottom": "8px"
                           },
-                          attrs: { src: "http://mall.net/images/" + item.image }
+                          attrs: {
+                            src: "https://cytonnmall.ml/images/" + item.image
+                          }
                         })
                       ]),
                       _vm._v(" "),
